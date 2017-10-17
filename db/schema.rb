@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170917211050) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.string "image_path"
+    t.string "image_path", default: "garbage.jpg"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
