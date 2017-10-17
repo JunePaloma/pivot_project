@@ -16,8 +16,7 @@ Site built with Ruby on Rails utilizing ActiveRecord on Postgresql. Site is prim
   * cd into it
   * ```bundle install```
   * ```rake db:setup```
-  * ```rake db:seed```
-  * ```rails server```
+  * ```rails s```
   * visit ```localhost:30000```
 
 ### Visit Online
