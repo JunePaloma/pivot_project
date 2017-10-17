@@ -467,7 +467,7 @@
         null,
         null,
         1,
-        null,
+        1,
         1,
         null,
         1,
@@ -520,8 +520,6 @@
         null
       ],
       "/Users/mikeheft/turing/mod3/projects/pivot_project/app/controllers/welcome_controller.rb": [
-        1,
-        1,
         1,
         1,
         1,
@@ -615,23 +613,8 @@
         0,
         null,
         null
-      ],
-      "/Users/mikeheft/turing/mod3/projects/pivot_project/app/models/item.rb": [
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null
       ]
     },
-    "timestamp": 1508282612
+    "timestamp": 1508283596
   }
 }

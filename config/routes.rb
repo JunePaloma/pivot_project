@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get '/', :to => 'welcome#index', :as => 'welcome'
 
   resources :items, only: [:index, :show]
-
+  resources :categories, only: [:index, :show]
   resources :carts, only: [:create]
 
   resources :users, only: [:new, :create, :update, :edit]
