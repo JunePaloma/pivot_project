@@ -26,10 +26,9 @@
     <div class="carousel-inner">
       <% @categories.each_with_index do |slide, i| %>
         <div class="item <% if i == 0 %>active<% end %> ">
-            <%= image_tag slide.image, class: 'resonsive-img' %>
+            <%= link_to image_tag(slide.image, class: 'resonsive-img'), category_path(slide) %>
           <div class="carousel-caption">
             <h4> <%= slide.name %> </h4>
-            <p> <%= button_to "info_outline", category_path(slide), class: "btn-large black large material-icons" , method: 'get' %> </p>
           </div>
         </div>
       <% end %>
