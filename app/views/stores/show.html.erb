@@ -1,0 +1,7 @@
+<div>
+<h1><%= @store.name %></h1>
+  <p><%=@store.description %></p>
+  <% @store.items.each do |item|%>
+    <%= link_to item.name, item_path(item) %>
+  <% end %>
+</div>
