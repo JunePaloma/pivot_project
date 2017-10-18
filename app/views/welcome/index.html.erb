@@ -7,11 +7,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<div>
-  <% @categories.each do |category|  %>
-    <%= link_to category.name, category_path(category)  %>
-  <% end %>
-</div>
 
 <div>
   <%= link_to 'View Stores', stores_path %>
@@ -30,11 +25,10 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <% @categories.each_with_index do |slide, i| %>
-        <div class="item #{active if i == 0}">
-            <%= image_tag slide.image %>
+        <div class="item <% if i == 0 %>active<% end %> ">
+            <%= link_to image_tag(slide.image, class: 'resonsive-img'), category_path(slide) %>
           <div class="carousel-caption">
             <h4> <%= slide.name %> </h4>
-            <p> <%= button_to "info_outline", category_path(slide), class: "btn-large black large material-icons" , method: 'get' %> </p>
           </div>
         </div>
       <% end %>
