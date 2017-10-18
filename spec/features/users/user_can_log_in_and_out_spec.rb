@@ -47,7 +47,7 @@ feature "user can login and out" do
     visit '/'
 
     click_on("Login")
-    click_on("Login with Twitter")
+    click_on(id: 'oauth_twitter_link')
 
     expect(page).to have_content("Logout")
     expect(page).to_not have_content("Login")
