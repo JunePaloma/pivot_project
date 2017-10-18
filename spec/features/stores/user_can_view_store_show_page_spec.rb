@@ -7,7 +7,6 @@ describe "user can visit store show page" do
     item_1 = store.items.first
 
     visit store_path(store)
-    save_and_open_page
     expect(page).to have_content(store.description)
     expect(page).to have_link(item_1.name)
   end

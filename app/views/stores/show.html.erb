@@ -1,4 +1,5 @@
 <h1><%= @store.name %></h1>
+<p><%= @store.description %></p>
 
 <div class="row">
   <% @store.items[0..4].each do |item| %>
@@ -8,7 +9,7 @@
         <%= image_tag item.image_path %>
       </div>
       <div class="card-content">
-        <p class="indextitle"> <%=item.name%>: <%= number_to_currency(item.price) %> </p>
+        <p class="indextitle"> <%=link_to item.name, item_path(item)%>: <%= number_to_currency(item.price) %> </p>
         <p><%= item.description %></p>
       </div>
       <div class="card-action">
