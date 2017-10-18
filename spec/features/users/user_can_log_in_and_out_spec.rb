@@ -41,4 +41,18 @@ feature "user can login and out" do
 
     expect(page).to have_content("Login Unsuccessful")
   end
+  scenario "user can log in with Oauth-Twitter" do
+    stub_omniauth
+
+    visit '/'
+
+    click_on("Login")
+    click_on("Login with Twitter")
+
+    expect(page).to have_content("Logout")
+    expect(page).to_not have_content("Login")
+    expect(page).to have_content("Logged in as:")
+
+
+  end
 end

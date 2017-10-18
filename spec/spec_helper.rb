@@ -99,3 +99,10 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+  def stub_omniauth
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+
+      })
+  end
