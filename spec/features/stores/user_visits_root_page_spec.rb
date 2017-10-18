@@ -3,11 +3,11 @@ require 'rails_helper'
 feature 'User' do
   context 'visits root page' do
     scenario 'sees list of categories' do
-      categories = create_list(:category, 5)
+      category = create(:category_with_items)
 
       visit root_path
 
-      expect(page).to have_content(categories[0].name)
+      expect(page).to have_content(category.name)
     end
 
     scenario 'sees link to all stores' do
