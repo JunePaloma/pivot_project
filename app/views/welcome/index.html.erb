@@ -7,6 +7,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
+<div>
+  <% @categories.each do |category|  %>
+    <%= link_to category.name, category_path(category)  %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to 'View Stores', stores_path %>
+</div>
 
 <div class="welcome">
 <div class="carouselcontainer">
@@ -18,37 +27,18 @@
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-    <% if @item3 %>
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-
-      <div class="item active">
-        <%= image_tag @item1.image_path, class: "carouselimg"%>
-        <div class="carousel-caption">
-          <h4> <%= @item1.name %> </h4>
-          <p> <%= @item1.description %>  <%= button_to "info_outline", item_path(@item1.id), class: "btn-large black large material-icons" , method: 'get' %> </p>
+      <% @categories.each_with_index do |slide, i| %>
+        <div class="item #{active if i == 0}">
+            <%= image_tag slide.image %>
+          <div class="carousel-caption">
+            <h4> <%= slide.name %> </h4>
+            <p> <%= button_to "info_outline", category_path(slide), class: "btn-large black large material-icons" , method: 'get' %> </p>
+          </div>
         </div>
-      </div>
-
-      <div class="item">
-          <%= image_tag @item2.image_path, class: "carouselimg" %>
-          <div class="carousel-caption">
-            <h4> <%= @item2.name %> </h4>
-            <p> <%= @item2.description %>          <%= button_to "info_outline", item_path(@item2.id), class: "btn-large black large material-icons" , method: 'get' %></p>
-          </div>
-      </div>
-
-      <div class="item">
-          <%= image_tag @item3.image_path, class: "carouselimg" %>
-          <div class="carousel-caption">
-            <h4> <%= @item3.name %> </h4>
-            <p> <%= @item3.description %>  <%= button_to "info_outline", item_path(@item3.id), class: "btn-large black large material-icons" , method: 'get' %></p>
-          </div>
-      </div>
-
       <% end %>
 
-    </div>
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -60,11 +50,4 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
-<br />
-<br />
-<br />
-
-<%= image_tag "bury.gif" %>
-<%= image_tag "trash.gif" %>
 </div>
