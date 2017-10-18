@@ -10,12 +10,10 @@ feature 'User' do
       expect(page).to have_content(categories[0].name)
     end
 
-    scenario 'sees list of stores' do
-      stores = create_list(:store, 5)
-
+    scenario 'sees link to all stores' do
       visit root_path
 
-      expect(page).to have_content(stores[0].name)
+      expect(page).to have_selector(:link_or_button, 'All Store')
     end
   end
 end
