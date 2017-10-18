@@ -1,0 +1,5 @@
+<div>
+  <% @stores.each do |store| %>
+    <%= link_to store.name, store_path(store) %>
+  <% end %>
+</div>
