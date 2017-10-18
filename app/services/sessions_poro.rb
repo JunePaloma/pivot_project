@@ -1,10 +1,10 @@
-class SessionsController < ApplicationController
-
-  def new
+class SessionsPoro
+  def initialize(user)
+    @user_params = user_params
   end
 
-  def create
-    @user = User.find_by(username: params[:session][:username])
+  def default_login
+    @user = User.find_by(username: @user_params[:session][:username])
     if authenticated?(@user) && @user.user?
       flash[:good_message] =  "Login Successful"
       session[:user_id] = @user.id
@@ -19,14 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    session.clear
-    redirect_to root_path
-  end
-
-  private
-  def authenticated?(user)
-    user && user.authenticate(params[:session][:password])
+  def oauth_login
   end
 
 end
