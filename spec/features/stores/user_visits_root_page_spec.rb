@@ -13,7 +13,7 @@ feature 'User' do
     scenario 'sees link to all stores' do
       visit root_path
 
-      expect(page).to have_selector(:link_or_button, 'All Stores')
+      expect(page).to have_selector(:link_or_button, 'View Stores')
       page.assert_selector(:css, 'a[href="/stores"]')
     end
   end
