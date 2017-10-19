@@ -15,6 +15,10 @@ feature "user can login and out" do
 
     click_on("Log In")
 
+    expect(current_path).to eq root_path
+
+    visit '/dashboard'
+
     expect(current_path).to eq('/dashboard')
     click_on("arrow_drop_down")
 
@@ -40,5 +44,19 @@ feature "user can login and out" do
     click_on("Log In")
 
     expect(page).to have_content("Login Unsuccessful")
+  end
+  scenario "user can log in with Oauth-Twitter" do
+
+    stub_omniauth
+
+    visit '/'
+
+    click_on("Login")
+    click_on(id: 'oauth_twitter_link')
+
+    expect(page).to have_content("Login Successful")
+    expect(page).to have_content("Logged in as: Josh")
+
+
   end
 end
