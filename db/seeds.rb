@@ -10,12 +10,21 @@ Item.destroy_all
 Category.destroy_all
 Order.destroy_all
 User.destroy_all
+Store.destroy_all
 
-CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal"]
+CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal", "Clothing", "Jewelry", "Sporting Goods", "Toys", "Pets"]
 
 CATEGORIES.each do |category|
   created = Category.create(name: category)
   puts "Created #{created.name} category."
+end
+#------------------------------Stores
+
+stores = ["store_1", "store_2", "store_3", "store_4", "store_5", "store_6", "store_7", "store_8", "store_9", "store_10",
+          "store_11", "store_12", "store_13", "store_14", "store_15", "store_16", "store_17", "store_18", "store_19", "store_20"]
+stores.each do |store|
+  business = StoreCreator.new(store, Faker::Hipster.paragraph).execute
+  puts "Created #{business.name} "
 end
 
 # -----------------------------Furniture
@@ -69,8 +78,8 @@ Item.create(name: "Single Mattress with Deulxe Rorschach pattern", description: 
 Item.create(name: "Tetris Mattress", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Mattresses"), image_path: "mattresses4.jpg", active: false)
 
 # -----------------------------Users
-15.times do |users|
-  name = Faker::FamilyGuy.character
+1000.times do |users|
+  name = Faker::Name.unique.name
   username = "#{name.gsub(/\s+/, "").downcase}"
   password = name.split.first.downcase
   User.create(name: name, username: username, password: password, street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, country: Faker::Address.country, zip_code: Faker::Address.zip)
@@ -88,17 +97,33 @@ def weighed_number(weights)
   ranges.find{ |p, _| p > u }.last
 end
 
-200.times do |order|
-  t1 = Time.parse("2012-11-16 12:00:00")
-  t2 = Time.parse("2018-09-15 12:00:00")
-  created = Order.create(user_id: User.all.sample.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now)
-  random = weighed_number({1 => 0.2, 2 => 0.2, 3 => 0.2, 4 => 0.2, 5 => 0.2 })
-  random.times do |add_item|
-    created.items << Item.all.sample
+users = User.all
+random_order_count = rand(10..20)
+users.each do |user|
+  random_order_count.times do |order|
+    t1 = Time.parse("2012-11-16 12:00:00")
+    t2 = Time.parse("2018-09-15 12:00:00")
+    created = Order.create(user_id: user.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now)
+    random = weighed_number({1 => 0.2, 2 => 0.2, 3 => 0.2, 4 => 0.2, 5 => 0.2 })
+    random.times do |add_item|
+      created.items << Item.all.sample
+    end
+    puts "Created order #{created.id} for #{created.user.name}"
   end
-  puts "Created order #{created.id} for #{created.user.name}"
 end
+
+# 200.times do |order|
+#   t1 = Time.parse("2012-11-16 12:00:00")
+#   t2 = Time.parse("2018-09-15 12:00:00")
+#   created = Order.create(user_id: User.all.sample.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now)
+#   random = weighed_number({1 => 0.2, 2 => 0.2, 3 => 0.2, 4 => 0.2, 5 => 0.2 })
+#   random.times do |add_item|
+#     created.items << Item.all.sample
+#   end
+#   puts "Created order #{created.id} for #{created.user.name}"
+# end
 
 puts "Creating the admin"
 # admin role still needs to be added
 User.create(name: "admin", username: "admin", password: "admin", role: "admin")
+User.create(name: "Josh", username: "josh@turing.io", password: "password")
