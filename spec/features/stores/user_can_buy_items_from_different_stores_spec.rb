@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User' do
-  scenario 'can buy items from different stores' do
+  scenario 'can add items from different stores to cart' do
     stores = create_list(:store, 5)
 
     stores.each do |store|
@@ -9,7 +9,16 @@ feature 'User' do
     end
 
     visit "/#{stores[0].slug}"
+    click_on('add_shopping_cart', match: :first)
+    visit "/#{stores[2].slug}"
+    click_on('add_shopping_cart', match: :first)
+    visit "/#{stores[1].slug}"
+    click_on('add_shopping_cart', match: :first)
 
-    all('a', :text => "#{stores[0].slug}")[1].click
+    click_on('shopping_cart')
+
+    expect(page).to have_content(stores[0].items.first.name)
+    expect(page).to have_content(stores[1].items.first.name)
+    expect(page).to have_content(stores[2].items.first.name)
   end
 end

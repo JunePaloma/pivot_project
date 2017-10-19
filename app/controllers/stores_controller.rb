@@ -5,6 +5,8 @@ class StoresController < ApplicationController
   end
 
   def show
-    @store = Store.find_by(slug: params[:store_slug])
+    unless @store = Store.find_by(slug: params[:store_slug])
+      render file: "/public/404"
+    end
   end
 end
