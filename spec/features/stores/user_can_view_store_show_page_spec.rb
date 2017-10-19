@@ -6,7 +6,8 @@ describe "user can visit store show page" do
     store.items = create_list(:item, 5)
     item_1 = store.items.first
 
-    visit store_path(store.slug)
+    visit "/#{store.slug}"
+
     expect(page).to have_content(store.description)
     expect(page).to have_link(item_1.name)
   end
