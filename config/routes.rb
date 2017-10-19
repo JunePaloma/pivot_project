@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get '/', :to => 'welcome#index', :as => 'welcome'
 
   resources :items, only: [:index, :show]
-  resources :categories, only: [:index, :show]
+  # resources :categories, only: [:index, :show]
   resources :carts, only: [:create]
   resources :stores, only: [:index, :show]
   resources :users, only: [:new, :create, :update, :edit]
@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   get '/cart', to: "carts#index", as: "cart"
   delete '/cart/:id', to: "carts#destroy", as: "cart_remove_item"
   put '/cart/:id', to: "carts#update", as: "cart_add_item"
-  get '/:category_name', to: 'categories#show'
 
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
+  get '/:category_name', to: 'categories#show'
 
 end
