@@ -10,10 +10,6 @@ class SessionsController < ApplicationController
       flash[:good_message] =  "Login Successful"
       session[:user_id] = user.id
       redirect_back(fallback_location: root_path)
-    # elsif authenticated?(@user) && @user.admin?
-    #   flash[:good_message] =  "Login Successful"
-    #   session[:user_id] = @user.id
-    #   redirect_to admin_dashboard_index_path
     else
       flash[:bad_message] = "Login Unsuccessful"
       redirect_back(fallback_location: root_path)
