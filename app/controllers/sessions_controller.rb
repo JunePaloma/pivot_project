@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
   end
 
   def oauth_login_info
-binding.pry
+    User.from_oauth(request.env["omniauth.auth"])
   end
 
 end
