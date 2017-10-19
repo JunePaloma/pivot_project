@@ -18,9 +18,10 @@ RSpec.describe Item, type: :model do
     it "::can returns random items" do
     x = 1
     category = create(:category)
+    store = create(:store)
 
       12.times do
-        Item.create(id: x, name: "couch#{x}", description: "The thing", price: 5.00, category: category)
+        Item.create!(id: x, name: "couch#{x}", description: "The thing", price: 5.00, category: category, store: store)
         x += 1
       end
 

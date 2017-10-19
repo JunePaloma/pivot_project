@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :store do
-    name "MyString"
-    slug "MyString"
-    description "MyString"
+    name "MyName"
+    slug "MyName"
+    description "MyDescription"
   end
 end

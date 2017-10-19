@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :item_orders
   has_many :orders, through: :item_orders
+  belongs_to :store
 
   validates :price, numericality: { greater_than: 0 }
   validates :name, presence: :true, uniqueness: :true
