@@ -10,5 +10,13 @@ class User < ApplicationRecord
     "#{self.street}, #{self.city}, #{self.state}, #{self.zip_code}, #{self.country}"
   end
 
-  
+  def self.from_oauth(arg)
+    where(uid: arg[:uid])
+    .first_or_create do |user|
+      user.uid = arg[:uid]
+      user.username = arg[:nickname]
+      
+
+    end
+  end
 end
