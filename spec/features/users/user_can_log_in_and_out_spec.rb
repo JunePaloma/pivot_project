@@ -50,9 +50,8 @@ feature "user can login and out" do
     click_on("Login")
     click_on(id: 'oauth_twitter_link')
 
-    expect(page).to have_content("Logout")
-    expect(page).to_not have_content("Login")
-    expect(page).to have_content("Logged in as:")
+    expect(page).to have_content("Login Successful")
+    expect(page).to have_content("Logged in as: Josh")
 
 
   end

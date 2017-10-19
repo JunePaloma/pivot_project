@@ -105,7 +105,8 @@ end
       'provider' => 'twitter',
       'uid' => '22222',
       'info' => {
-        'name' => 'Mock'
+        'name' => 'Mock',
+        'nickname' => 'Josh'
       },
       'credentials' => {
         'token' => ENV["TWITTER_MOCK_USER_TOKEN"],
