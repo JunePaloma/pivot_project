@@ -9,4 +9,6 @@ class User < ApplicationRecord
   def address
     "#{self.street}, #{self.city}, #{self.state}, #{self.zip_code}, #{self.country}"
   end
+
+  
 end

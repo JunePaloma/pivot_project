@@ -42,6 +42,7 @@ feature "user can login and out" do
     expect(page).to have_content("Login Unsuccessful")
   end
   scenario "user can log in with Oauth-Twitter" do
+
     stub_omniauth
 
     visit '/'
