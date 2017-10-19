@@ -6,76 +6,232 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 ItemOrder.destroy_all
+CategoryItem.destroy_all
 Item.destroy_all
 Category.destroy_all
 Order.destroy_all
 User.destroy_all
 Store.destroy_all
 
-CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal", "Clothing", "Jewelry", "Sporting Goods", "Toys", "Pets"]
+category_1 = Category.create(name: "Bath")
+category_2 = Category.create(name: "Furniture")
+category_3 = Category.create(name: "Kitchen")
+category_4 = Category.create(name: "Mattresses")
+category_5 = Category.create(name: "Seasonal")
+category_6 = Category.create(name: "Beer")
+category_7 = Category.create(name: "Jewelry")
+category_8 = Category.create(name: "Sporting Goods")
+category_9 = Category.create(name: "Toys")
+category_10 = Category.create(name: "Cats")
 
-CATEGORIES.each do |category|
-  created = Category.create(name: category)
-  puts "Created #{created.name} category."
-end
 #------------------------------Stores
 
-stores = ["store_1", "store_2", "store_3", "store_4", "store_5", "store_6", "store_7", "store_8", "store_9", "store_10",
-          "store_11", "store_12", "store_13", "store_14", "store_15", "store_16", "store_17", "store_18", "store_19", "store_20"]
-stores.each do |store|
-  business = StoreCreator.new(store, Faker::Hipster.paragraph).execute
-  puts "Created #{business.name} "
-end
+puts "Creating Stores"
+
+store_1 = StoreCreator.new("store_1", Faker::Hipster.paragraph).execute
+store_2 = StoreCreator.new("store_2", Faker::Hipster.paragraph).execute
+store_3 = StoreCreator.new("store_3", Faker::Hipster.paragraph).execute
+store_4 = StoreCreator.new("store_4", Faker::Hipster.paragraph).execute
+store_5 = StoreCreator.new("store_5", Faker::Hipster.paragraph).execute
+store_6 = StoreCreator.new("store_6", Faker::Hipster.paragraph).execute
+store_7 = StoreCreator.new("store_7", Faker::Hipster.paragraph).execute
+store_8 = StoreCreator.new("store_8", Faker::Hipster.paragraph).execute
+store_9 = StoreCreator.new("store_9", Faker::Hipster.paragraph).execute
+store_10 = StoreCreator.new("store_10", Faker::Hipster.paragraph).execute
+store_11 = StoreCreator.new("store_11", Faker::Hipster.paragraph).execute
+store_12 = StoreCreator.new("store_12", Faker::Hipster.paragraph).execute
+store_13 = StoreCreator.new("store_13", Faker::Hipster.paragraph).execute
+store_14 = StoreCreator.new("store_14", Faker::Hipster.paragraph).execute
+store_15 = StoreCreator.new("store_15", Faker::Hipster.paragraph).execute
+store_16 = StoreCreator.new("store_16", Faker::Hipster.paragraph).execute
+store_17 = StoreCreator.new("store_17", Faker::Hipster.paragraph).execute
+store_18 = StoreCreator.new("store_18", Faker::Hipster.paragraph).execute
+store_19 = StoreCreator.new("store_19", Faker::Hipster.paragraph).execute
+store_20 = StoreCreator.new("store_20", Faker::Hipster.paragraph).execute
+
+
+
+# stores = ["store_1", "store_2", "store_3", "store_4", "store_5", "store_6", "store_7", "store_8", "store_9", "store_10",
+#           "store_11", "store_12", "store_13", "store_14", "store_15", "store_16", "store_17", "store_18", "store_19", "store_20"]
+# stores.each do |store|
+#   business = StoreCreator.new(store, Faker::Hipster.paragraph).execute
+#   puts "Created #{business.name} "
+# end
 
 # -----------------------------Furniture
 puts "Creating Furniture Items"
-Item.create(name: "Reduced Height Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture1.png")
-Item.create(name: "Pallet Chic Backyard Set", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture2.png")
-Item.create(name: "Distressed Beach Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture3.png")
-Item.create(name: "Antique Entertainment Center", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture4.png")
-Item.create(name: "Shabby Chic Retro Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture5.png")
-Item.create(name: "Extended Storage Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture6.png")
-Item.create(name: "Dual Tone Distressed Deconstructed Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture7.png", active: false)
-Item.create(name: "Overstuffed Deconstruced Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture8.png")
-Item.create(name: "Floral Pattern Yard Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture9.png", active: false)
-Item.create(name: "Wasteland Chic Chaise", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture10.png")
-Item.create(name: "Shabby Chic Deconstructed Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture11.png")
-Item.create(name: "Distressed Dual Tone Leather Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Furniture"), image_path: "furniture12.png")
+item_1 = Item.create(name: "Reduced Height Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture1.png", store: store_2)
+item_2 = Item.create(name: "Pallet Chic Backyard Set", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture2.png", store: store_2)
+item_3 = Item.create(name: "Distressed Beach Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture3.png", store: store_2)
+item_4 = Item.create(name: "Antique Entertainment Center", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture4.png", store: store_2)
+item_5 = Item.create(name: "Shabby Chic Retro Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture5.png", store: store_2)
+item_6 = Item.create(name: "Extended Storage Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture6.png", store: store_2)
+item_7 = Item.create(name: "Dual Tone Distressed Deconstructed Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture7.png", active: false, store: store_2)
+item_8 = Item.create(name: "Overstuffed Deconstruced Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture8.png", store: store_2)
+item_9 = Item.create(name: "Floral Pattern Yard Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture9.png", active: false, store: store_2)
+item_10 = Item.create(name: "Wasteland Chic Chaise", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture10.png", store: store_2)
+item_11 = Item.create(name: "Shabby Chic Deconstructed Couch", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture11.png", store: store_2)
+item_12 = Item.create(name: "Distressed Dual Tone Leather Sofa", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "furniture12.png", store: store_2)
 
 # -----------------------------Kitchen
 puts "Creating Kitchen Items"
-Item.create(name: "Wasteland Chic Fridge", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen1.jpg")
-Item.create(name: "Pre-weathered Deluxe Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen2.jpg")
-Item.create(name: "Yard Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen3.jpg")
-Item.create(name: "Deluxe Toaster with Toast Extraction Tool", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen4.jpg", active: false)
-Item.create(name: "Shabby Chic Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen5.jpg")
-Item.create(name: "Deluxe 'Probably an Oven'", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen6.jpg")
-Item.create(name: "Rust Based Pan", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Kitchen"), image_path: "kitchen7.jpg")
+item_13 = Item.create(name: "Wasteland Chic Fridge", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen1.jpg", store: store_3)
+item_14 = Item.create(name: "Pre-weathered Deluxe Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen2.jpg", store: store_3)
+item_15 = Item.create(name: "Yard Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen3.jpg", store: store_3)
+item_16 = Item.create(name: "Deluxe Toaster with Toast Extraction Tool", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen4.jpg", active: false, store: store_3)
+item_17 = Item.create(name: "Shabby Chic Microwave", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen5.jpg", store: store_3)
+item_18 = Item.create(name: "Deluxe 'Probably an Oven'", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen6.jpg", store: store_3)
+item_19 = Item.create(name: "Rust Based Pan", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "kitchen7.jpg", store: store_3)
 
 
 # -----------------------------Seasonal
 puts "Creating Seasonal Items"
-Item.create(name: "Possibly a Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal1.jpg")
-Item.create(name: "Artesinal Jack 'O Lantern", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal2.jpg")
-Item.create(name: "Portable Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal3.jpg")
-Item.create(name: "Aged Handcrafted Carved Pumpkin", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal4.jpg")
-Item.create(name: "Ornaments Assortment", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal5.jpg")
-Item.create(name: "Pre-Lit Fireworks", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal6.jpg")
-Item.create(name: "Pre-Lit Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal7.jpg")
-Item.create(name: "Holiday Cheer Spreader", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Seasonal"), image_path: "seasonal8.jpg", active: false)
+item_20 = Item.create(name: "Possibly a Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal1.jpg", store: store_5)
+item_21 = Item.create(name: "Artesinal Jack 'O Lantern", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal2.jpg", store: store_5)
+item_22 = Item.create(name: "Portable Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal3.jpg", store: store_5)
+item_23 = Item.create(name: "Aged Handcrafted Carved Pumpkin", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal4.jpg", store: store_5)
+item_24 = Item.create(name: "Ornaments Assortment", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal5.jpg", store: store_5)
+item_25 = Item.create(name: "Pre-Lit Fireworks", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal6.jpg", store: store_5)
+item_26 = Item.create(name: "Pre-Lit Christmas Tree", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal7.jpg", store: store_5)
+item_27 = Item.create(name: "Holiday Cheer Spreader", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "seasonal8.jpg", active: false, store: store_5)
 
 # -----------------------------Bath
 puts "Creating Bath Items"
-Item.create(name: "Polka Dot Shower Curtain", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "bath1.jpg")
-Item.create(name: "Toothbrush Assortment", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "bath2.jpg", active: false)
-Item.create(name: "Luxury Bath Mat", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "bath3.jpg")
-Item.create(name: "Shower Curtain with edge accents", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "bath4.jpg")
+item_28 = Item.create(name: "Polka Dot Shower Curtain", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "bath1.jpg", store: store_1)
+item_29 = Item.create(name: "Toothbrush Assortment", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "bath2.jpg", active: false, store: store_1)
+item_30 = Item.create(name: "Luxury Bath Mat", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "bath3.jpg", store: store_1)
+item_31 = Item.create(name: "Shower Curtain with edge accents", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "bath4.jpg", store: store_1)
 
 # -----------------------------Mattresses
-Item.create(name: "Sleep mat for large dog or small child", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Mattresses"), image_path: "mattresses1.jpg")
-Item.create(name: "This item speaks for itself", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "mattresses2.jpg")
-Item.create(name: "Single Mattress with Deulxe Rorschach pattern", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Bath"), image_path: "mattresses3.jpg")
-Item.create(name: "Tetris Mattress", description: Faker::Hipster.paragraph, price: rand(100..1000), category: Category.find_by(name: "Mattresses"), image_path: "mattresses4.jpg", active: false)
+puts "Creating Mattress Items"
+
+item_32 = Item.create(name: "Sleep mat for large dog or small child", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "mattresses1.jpg", store: store_4)
+item_33 = Item.create(name: "This item speaks for itself", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "mattresses2.jpg", store: store_4)
+item_34 = Item.create(name: "Single Mattress with Deulxe Rorschach pattern", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "mattresses3.jpg", store: store_4)
+item_35 = Item.create(name: "Tetris Mattress", description: Faker::Hipster.paragraph, price: rand(100..1000), image_path: "mattresses4.jpg", active: false, store: store_4)
+
+#___________________________Item_Categories
+puts "Creating Item Categories"
+CategoryItem.create(item: item_32, category: category_4)
+CategoryItem.create(item: item_33, category: category_4)
+CategoryItem.create(item: item_34, category: category_4)
+CategoryItem.create(item: item_35, category: category_4)
+CategoryItem.create(item: item_28, category: category_1)
+CategoryItem.create(item: item_29, category: category_1)
+CategoryItem.create(item: item_30, category: category_1)
+CategoryItem.create(item: item_31, category: category_1)
+CategoryItem.create(item: item_20, category: category_5)
+CategoryItem.create(item: item_21, category: category_5)
+CategoryItem.create(item: item_22, category: category_5)
+CategoryItem.create(item: item_23, category: category_5)
+CategoryItem.create(item: item_24, category: category_5)
+CategoryItem.create(item: item_25, category: category_5)
+CategoryItem.create(item: item_26, category: category_5)
+CategoryItem.create(item: item_27, category: category_5)
+CategoryItem.create(item: item_13, category: category_3)
+CategoryItem.create(item: item_14, category: category_3)
+CategoryItem.create(item: item_15, category: category_3)
+CategoryItem.create(item: item_16, category: category_3)
+CategoryItem.create(item: item_17, category: category_3)
+CategoryItem.create(item: item_18, category: category_3)
+CategoryItem.create(item: item_19, category: category_3)
+CategoryItem.create(item: item_1, category: category_2)
+CategoryItem.create(item: item_2, category: category_2)
+CategoryItem.create(item: item_3, category: category_2)
+CategoryItem.create(item: item_4, category: category_2)
+CategoryItem.create(item: item_5, category: category_2)
+CategoryItem.create(item: item_6, category: category_2)
+CategoryItem.create(item: item_7, category: category_2)
+CategoryItem.create(item: item_8, category: category_2)
+CategoryItem.create(item: item_9, category: category_2)
+CategoryItem.create(item: item_10, category: category_2)
+CategoryItem.create(item: item_11, category: category_2)
+CategoryItem.create(item: item_12, category: category_2)
+CategoryItem.create(item: item_32, category: category_2)
+CategoryItem.create(item: item_33, category: category_2)
+CategoryItem.create(item: item_34, category: category_2)
+CategoryItem.create(item: item_35, category: category_2)
+
+puts "Adding items for cats category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Cat.unique.breed,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "cat.jpg", store: store_1)
+  CategoryItem.create(item: item, category: category_10)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Cat.unique.breed,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "cat.jpg", store: store_2)
+  CategoryItem.create(item: item, category: category_10)
+end
+
+puts "Adding items for toys category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Pokemon.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "toy.jpg", store: store_3)
+  CategoryItem.create(item: item, category: category_9)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Pokemon.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "toy.jpg", store: store_4)
+  CategoryItem.create(item: item, category: category_9)
+end
+
+puts "Adding items for Sporting Goods category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "Baseball.jpg", store: store_5)
+  CategoryItem.create(item: item, category: category_8)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "Baseball.jpg", store: store_6)
+  CategoryItem.create(item: item, category: category_8)
+end
+
+puts "Adding items to the Jewelry category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "jewelry.jpg", store: store_7)
+  CategoryItem.create(item: item, category: category_7)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "jewelry.jpg", store: store_8)
+  CategoryItem.create(item: item, category: category_7)
+end
+
+puts "Adding items to the Beer category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Beer.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "beer.jpg", store: store_9)
+  CategoryItem.create(item: item, category: category_6)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Beer.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "beer.jpg", store: store_10)
+  CategoryItem.create(item: item, category: category_6)
+end
+
 
 # -----------------------------Users
 1000.times do |users|

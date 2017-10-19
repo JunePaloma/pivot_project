@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018203551) do
+ActiveRecord::Schema.define(version: 20171019201205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20171018203551) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_items", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "item_id"
+    t.index ["category_id"], name: "index_category_items_on_category_id"
+    t.index ["item_id"], name: "index_category_items_on_item_id"
   end
 
   create_table "item_orders", force: :cascade do |t|
@@ -38,9 +45,7 @@ ActiveRecord::Schema.define(version: 20171018203551) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
     t.bigint "store_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["store_id"], name: "index_items_on_store_id"
   end
 
@@ -74,9 +79,10 @@ ActiveRecord::Schema.define(version: 20171018203551) do
     t.string "zip_code"
   end
 
+  add_foreign_key "category_items", "categories"
+  add_foreign_key "category_items", "items"
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
-  add_foreign_key "items", "categories"
   add_foreign_key "items", "stores"
   add_foreign_key "orders", "users"
 end
