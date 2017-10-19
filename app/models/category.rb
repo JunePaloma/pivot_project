@@ -11,4 +11,5 @@ class Category < ApplicationRecord
       .first
       .image_path
   end
+
 end
