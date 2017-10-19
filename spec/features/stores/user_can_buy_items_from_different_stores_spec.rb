@@ -10,6 +10,6 @@ feature 'User' do
 
     visit "/#{stores[0].slug}"
 
-    find(:xpath, "//a[text()=#{store.slug}][2]").click
+    all('a', :text => "#{stores[0].slug}")[1].click
   end
 end

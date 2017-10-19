@@ -5,7 +5,6 @@ class StoresController < ApplicationController
   end
 
   def show
-    require 'pry'; binding.pry
-    @store = Store.find_by(slug: params[:slug])
+    @store = Store.find_by(slug: params[:store_slug])
   end
 end
