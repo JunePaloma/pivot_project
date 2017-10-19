@@ -15,6 +15,8 @@ feature "as a logged in admin" do
 
     click_on("Log In")
 
+    visit '/admin/dashboard'
+
     expect(current_path).to eq('/admin/dashboard')
 
     expect(page).to have_content("Admin Dashboard")

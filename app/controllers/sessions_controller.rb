@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
 
   def create
 
-    default_login? ? @user = default_login_info : @user = oauth_login_info
-    if @user
+    default_login? ? user = default_login_info : user = oauth_login_info
+    if user
       flash[:good_message] =  "Login Successful"
-      session[:user_id] = @user.id
+      session[:user_id] = user.id
       redirect_back(fallback_location: root_path)
     # elsif authenticated?(@user) && @user.admin?
     #   flash[:good_message] =  "Login Successful"
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
 
   def default_login_info
     user = User.find_by(username: params[:session][:username])
-    if authenticated?(@user) && @user.user?
+    if user && authenticated?(user)
       user
     end
   end
