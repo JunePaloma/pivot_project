@@ -13,7 +13,7 @@ feature "visitor can view all items" do
     expect(page).to_not have_content(category2.items[0].name)
     expect(page).to_not have_content(category2.items[1].name)
 
-    visit "/#{category2.name}"
+    visit category_path(category2.name)
 
     expect(page).to have_content(category2.items[0].name)
     expect(page).to have_content(category2.items[1].name)
