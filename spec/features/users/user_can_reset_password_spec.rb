@@ -13,7 +13,7 @@ feature 'User can reset password' do
     expect(current_path).to eq '/password-reset'
 
     # When I fill in `Email` with "josh@example.com"
-    fill_in 'Email', with 'josh@example.com'
+    fill_in 'Email', with: 'josh@example.com'
     # And I click `Submit`
     click_on 'Submit'
     # Then I should be redirected to "/password-confirmation"
