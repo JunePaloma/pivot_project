@@ -215,7 +215,7 @@
     left: 0;
     top: 150px;
     width: 60%; /* Full width */
-    height: 60%; /* Full height */
+    height: 70%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     padding-top: 100px;
 }
