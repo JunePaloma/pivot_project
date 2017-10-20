@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   get '/password-reset', to: 'passwords#show'
   post '/password-reset', to: 'passwords#reset'
+  patch '/password-reset/update', to: 'passwords#update', as: 'edit_password'
 
   get '/password-confirmation', to: 'confirmations#new', as: 'new_confirmation'
 
