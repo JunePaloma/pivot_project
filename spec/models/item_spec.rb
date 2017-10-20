@@ -21,7 +21,7 @@ RSpec.describe Item, type: :model do
     store = create(:store)
 
       12.times do
-        Item.create!(id: x, name: "couch#{x}", description: "The thing", price: 5.00, category: category, store: store)
+        Item.create!(id: x, name: "couch#{x}", description: "The thing", price: 5.00, store: store)
         x += 1
       end
 

@@ -5,7 +5,6 @@
     <p>  <%= @item.name %> </p>
     <p>  <%= @item.description %> </p>
     <p>  <%= number_to_currency(@item.price) %> </p>
-    <p>  <%= @item.category.name %> </p>
     <%= image_tag @item.image_path, class: "itemimage", size: "640x480" %>
     <% if @item.active %>
     <%= button_to 'add_shopping_cart', carts_path(item_id: @item.id), class: "btn-large black large material-icons"  %>

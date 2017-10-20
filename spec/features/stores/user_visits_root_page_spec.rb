@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'User' do
   context 'visits root page' do
-    scenario 'sees list of categories' do
-      category = create(:category_with_items)
+    xscenario 'sees list of categories' do
+      category1 = create(:category)
+      category1.items << create_list(:item, 5)
+
 
       visit root_path
 
