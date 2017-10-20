@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'User' do
   scenario 'can add items from different stores to cart' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     stores = create_list(:store, 5)
 
     stores.each do |store|
