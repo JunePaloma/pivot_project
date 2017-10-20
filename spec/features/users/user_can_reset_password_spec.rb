@@ -19,7 +19,7 @@ feature 'User can reset password' do
     # Then I should be redirected to "/password-confirmation"
     expect(current_path).to eq '/password-confirmation'
     # And I should see instructions to enter my confirmation code
-    expect(page).to have_content "Please enter your text message confirmation code"
+    expect(page).to have_content "Please enter your verification code"
     # And I should have received a text message with a confirmation code
 
     # When I enter the confirmation code
