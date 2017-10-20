@@ -10,6 +10,8 @@ FactoryGirl.define do
     state "California"
     country "Texas"
     zip_code "12311"
+    phone "5555555555"
+    verification_code "123456"
 
     factory :user_with_orders do
       after(:create) do |user|
