@@ -17,7 +17,10 @@ class="close" title="Close Modal">&times;</span>
         <%= f.submit "Log In"%>
       <% end %>
       <br />
-      <%= link_to "Login in with Twitter", "/auth/twitter", id: 'oauth_twitter_link' %>
-     <%= render :partial => 'layouts/create_account_popup' %>
+      <%= button_to "Login in with Twitter", "/auth/twitter", id: 'oauth_twitter_link' %>
+      <br>
+      <%= button_to "Forgot my Password", "/password-reset" %>
+      <br>
+      <%= render :partial => 'layouts/create_account_popup' %>
     </div>
 </div>
