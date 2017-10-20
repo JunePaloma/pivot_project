@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/password-reset', to: 'passwords#show'
   post '/password-reset', to: 'passwords#reset'
 
+  get '/password-confirmation', to: 'confirmations#new', as: 'new_confirmation_path'
+
   get '/cart', to: "carts#index", as: "cart"
   delete '/cart/:id', to: "carts#destroy", as: "cart_remove_item"
   put '/cart/:id', to: "carts#update", as: "cart_add_item"
