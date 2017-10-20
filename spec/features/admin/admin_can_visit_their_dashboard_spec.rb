@@ -3,6 +3,10 @@ require 'rails_helper'
 feature "as a logged in admin" do
   scenario "they are redirected to the admin dashboard after they log in" do
     admin   = create(:user, role: 1)
+    # categories = create_list(:category, 5)
+    # categories.each do |category|
+    #   category.items = create_list(:item, 5)
+    # end
 
     visit '/'
 
@@ -21,7 +25,7 @@ feature "as a logged in admin" do
 
     expect(page).to have_content("Admin Dashboard")
   end
-  
+
 feature "as a logged in non-admin user" do
   scenario "they cannot visit the admin dashboard" do
     user = create(:user)
