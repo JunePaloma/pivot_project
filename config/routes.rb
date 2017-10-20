@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   get "/auth/twitter", to: "sessions#create"
   get "/auth/twitter/callback", to: "sessions#create"
 
-
+  get '/password-reset', to: 'passwords#show'
+  post '/password-reset', to: 'passwords#reset'
 
   get '/cart', to: "carts#index", as: "cart"
   delete '/cart/:id', to: "carts#destroy", as: "cart_remove_item"
