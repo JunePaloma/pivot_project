@@ -1,0 +1,15 @@
+<div>
+	<h3>Please enter your verification code</h3>
+	<p>You should have received a code via SMS to your phone</p>
+</div>
+
+<div>
+	<%= form_for @user, url: edit_password_path do |f| %>
+			<%= f.label :verification_code, "Verification Code" %>
+			<%= f.text_field :verification_code %>
+			<%= f.label :password, "New Password" %>
+			<%= f.password_field :password %>
+			<%= f.password_field :password_confirmation %>
+			<%= f.submit "Submit" %>
+	<% end %>
+</div>
