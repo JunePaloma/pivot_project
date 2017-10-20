@@ -99,3 +99,18 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+  def stub_omniauth
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+      'provider' => 'twitter',
+      'uid' => '22222',
+      'info' => {
+        'name' => 'Mock',
+        'nickname' => 'Josh'
+      },
+      'credentials' => {
+        'token' => ENV["TWITTER_MOCK_USER_TOKEN"],
+        'secret' => ENV["TWITTER_MOCK_USER_SECRET"]
+      }
+      })
+  end

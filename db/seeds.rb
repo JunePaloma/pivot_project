@@ -232,6 +232,85 @@ end
   CategoryItem.create(item: item, category: category_6)
 end
 
+puts "Adding items to the seasonal category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "seasonal6.jpg", store: store_11)
+  CategoryItem.create(item: item, category: category_5)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "seasonal5.jpg", store: store_12)
+  CategoryItem.create(item: item, category: category_5)
+end
+
+puts "Adding items to the mattress category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "mattresses2.jpg", store: store_13)
+  CategoryItem.create(item: item, category: category_4)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "mattresses1.jpg", store: store_14)
+  CategoryItem.create(item: item, category: category_4)
+end
+
+puts "Adding items to the kitchen category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "kitchen5.jpg", store: store_15)
+  CategoryItem.create(item: item, category: category_3)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "kitchen4.jpg", store: store_16)
+  CategoryItem.create(item: item, category: category_3)
+end
+
+puts "Adding items to the furniture category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "furniture9.jpg", store: store_17)
+  CategoryItem.create(item: item, category: category_2)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "furniture10.jpg", store: store_18)
+  CategoryItem.create(item: item, category: category_2)
+end
+
+  puts "Adding items to the bath category"
+
+  25.times do |index|
+    item = Item.create!(name: Faker::Commerce.unique.product_name,
+                 description: Faker::Lorem.sentence(20, false, 0).chop,
+                 price: rand(100..1000), image_path: "bath4.jpg", store: store_20)
+    CategoryItem.create(item: item, category: category_1)
+  end
+
+  25.times do |index|
+    item = Item.create!(name: Faker::Commerce.unique.product_name,
+                 description: Faker::Lorem.sentence(20, false, 0).chop,
+                 price: rand(100..1000), image_path: "bath3.jpg", store: store_19)
+    CategoryItem.create(item: item, category: category_1)
+  end
 
 # -----------------------------Users
 1000.times do |users|
@@ -268,18 +347,7 @@ users.each do |user|
   end
 end
 
-# 200.times do |order|
-#   t1 = Time.parse("2012-11-16 12:00:00")
-#   t2 = Time.parse("2018-09-15 12:00:00")
-#   created = Order.create(user_id: User.all.sample.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now)
-#   random = weighed_number({1 => 0.2, 2 => 0.2, 3 => 0.2, 4 => 0.2, 5 => 0.2 })
-#   random.times do |add_item|
-#     created.items << Item.all.sample
-#   end
-#   puts "Created order #{created.id} for #{created.user.name}"
-# end
-
 puts "Creating the admin"
-# admin role still needs to be added
+
 User.create(name: "admin", username: "admin", password: "admin", role: "admin")
 User.create(name: "Josh", username: "josh@turing.io", password: "password")

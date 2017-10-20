@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171019201205) do
+=======
+
+ActiveRecord::Schema.define(version: 20171019002307) do
+
+>>>>>>> ba92e10818d1db3713f0948aef46bd37cfb0c3bd
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +83,9 @@ ActiveRecord::Schema.define(version: 20171019201205) do
     t.string "state"
     t.string "country"
     t.string "zip_code"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_token_secret"
   end
 
   add_foreign_key "category_items", "categories"
