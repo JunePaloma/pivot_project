@@ -76,7 +76,7 @@
 
       <div style="padding-left:20px">
          <ul>
-           <% @categories.each do |category|  %>
+           <% Category.all.each do |category|  %>
              <li><%= link_to category.name, category_path(category.name), class: 'white-text' %></li>
            <% end %>
         </ul>
