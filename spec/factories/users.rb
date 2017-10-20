@@ -10,7 +10,7 @@ FactoryGirl.define do
     state "California"
     country "Texas"
     zip_code "12311"
-    phone "5555555555"
+    phone ENV['TEST_NUMBER']
     verification_code "123456"
     email "email@email.com"
 
