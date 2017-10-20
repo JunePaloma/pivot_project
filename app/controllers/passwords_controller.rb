@@ -6,7 +6,7 @@ class PasswordsController < ApplicationController
   def reset
     user = User.find_by(email: params[:password][:email])
     ConfirmationSender.send_confirmation(user)
-    redirect_to new_confirmation_path
+    redirect_to new_confirmation_path(user_id: user.id)
   end
 
 end
