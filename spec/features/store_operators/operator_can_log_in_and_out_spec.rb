@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature "store operator can login and out" do
-  scenario "if already registered" do
-    store_mgr = StoreOperator.create(username: "Busman", password: "password")
+  scenario "when registered as a manager" do
+    store_mgr = StoreOperator.create(user_name: "Busman", password: "password")
 
-    visit '/store_operator'
+    visit '/store_operator_login_path'
 
     click_on("Login")
 
@@ -33,15 +33,15 @@ feature "store operator can login and out" do
   end
 
   scenario "registered as an admin" do
-    store_admin = StoreOperator.create(username: "Adman", password: "password", role: 1)
+    store_admin = StoreOperator.create(user_name: "Adman", password: "password", role: 1)
 
-    visit '/store_operator'
+    visit '/store_operator_login_path'
 
     click_on("Login")
 
     expect(current_path).to eq(store_operator_login_path)
 
-    fill_in "session[username]", with: store_admin.username
+    fill_in "session[username]", with: store_admin.user_name
     fill_in "session[password]", with: store_admin.password
 
     click_on("Log In")
@@ -53,7 +53,7 @@ feature "store operator can login and out" do
     expect(current_path).to eq('/operator_dashboard')
     click_on("arrow_drop_down")
 
-    expect(page).to have_content("Logged in as: #{store_admin.username}")
+    expect(page).to have_content("Logged in as: #{store_admin.user_name}")
     expect(page).to_not have_link("Login")
     expect(page).to have_link("Logout")
     expect(page).to have_link("Update Store")
@@ -63,7 +63,7 @@ feature "store operator can login and out" do
     expect(current_path).to eq(root_path)
     expect(page).to_not have_link("Logout")
     expect(page).to have_content("Login")
-
+  end
 
   scenario "if a user enters invalid credentials" do
     visit '/store_operator'
@@ -72,7 +72,7 @@ feature "store operator can login and out" do
 
     expect(current_path).to eq(root_path)
 
-    fill_in "session[username]", with: "invalid_username"
+    fill_in "session[username]", with: "invalid_user_name"
     fill_in "session[password]", with: "invalid_password"
 
     click_on("Log In")
