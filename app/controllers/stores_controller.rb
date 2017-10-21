@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-  skip_before_action :authenticate_request
 
   def index
     @stores = Store.all

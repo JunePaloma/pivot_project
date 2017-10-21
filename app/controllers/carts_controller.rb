@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  skip_before_action :authenticate_request
   include ActionView::Helpers::TextHelper
 
   def index
