@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20171021184232) do
   end
 
   create_table "category_items", force: :cascade do |t|
-    t.bigint "category_id"
     t.bigint "item_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_category_items_on_category_id"
     t.index ["item_id"], name: "index_category_items_on_item_id"
   end
@@ -51,7 +51,9 @@ ActiveRecord::Schema.define(version: 20171021184232) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
     t.bigint "store_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["store_id"], name: "index_items_on_store_id"
   end
 
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20171021184232) do
   add_foreign_key "category_items", "items"
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "stores"
   add_foreign_key "orders", "users"
 end

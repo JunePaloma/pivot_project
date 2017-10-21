@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def all_for_nav
+  def all_categories
     Category.all
   end
 end

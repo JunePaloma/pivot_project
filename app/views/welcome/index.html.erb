@@ -24,7 +24,7 @@
     </ol>
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-      <% all_for_nav.each_with_index do |slide, i| %>
+      <% @categories.each_with_index do |slide, i| %>
         <div class="item <% if i == 0 %>active<% end %> ">
           <%= link_to image_tag(slide.image, class: 'resonsive-img'), category_path(slide.name) %>
           <div class="carousel-caption">

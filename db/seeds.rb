@@ -5,11 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-ItemOrder.destroy_all
-Item.destroy_all
-Category.destroy_all
-Order.destroy_all
-User.destroy_all
+
+
 
 CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal"]
 
@@ -100,5 +97,239 @@ end
 end
 
 puts "Creating the admin"
-# admin role still needs to be added
 User.create(name: "admin", username: "admin", password: "admin", role: "admin")
+
+#new seeds
+puts "Creating Store"
+store = StoreCreator.new("Uncle Frank's Original Goods", "All of Uncle Frank's original ideas").execute
+puts "Adding store_id to existing items"
+items = Item.all
+items.each do |item|
+  item.update(store_id: store.id)
+  CategoryItem.create(category: item.category, item_id: item.id)
+end
+puts "Adding Categories"
+category_6 = Category.create(name: "Beer")
+category_7 = Category.create(name: "Books")
+category_8 = Category.create(name: "Sporting Goods")
+category_9 = Category.create(name: "Toys")
+category_10 = Category.create(name: "Cats")
+category_5 = Category.find_by(name: "Seasonal")
+category_4 = Category.find_by(name: "Mattresses")
+category_3 = Category.find_by(name: "Kitchen")
+category_2 = Category.find_by(name: "Furniture")
+category_1 = Category.find_by(name: "Bath")
+
+puts "Adding stores"
+store_2 = StoreCreator.new("store_2", Faker::Hipster.paragraph).execute
+store_3 = StoreCreator.new("store_3", Faker::Hipster.paragraph).execute
+store_4 = StoreCreator.new("store_4", Faker::Hipster.paragraph).execute
+store_5 = StoreCreator.new("store_5", Faker::Hipster.paragraph).execute
+store_6 = StoreCreator.new("store_6", Faker::Hipster.paragraph).execute
+store_7 = StoreCreator.new("store_7", Faker::Hipster.paragraph).execute
+store_8 = StoreCreator.new("store_8", Faker::Hipster.paragraph).execute
+store_9 = StoreCreator.new("store_9", Faker::Hipster.paragraph).execute
+store_10 = StoreCreator.new("store_10", Faker::Hipster.paragraph).execute
+store_11 = StoreCreator.new("store_11", Faker::Hipster.paragraph).execute
+store_12 = StoreCreator.new("store_12", Faker::Hipster.paragraph).execute
+store_13 = StoreCreator.new("store_13", Faker::Hipster.paragraph).execute
+store_14 = StoreCreator.new("store_14", Faker::Hipster.paragraph).execute
+store_15 = StoreCreator.new("store_15", Faker::Hipster.paragraph).execute
+store_16 = StoreCreator.new("store_16", Faker::Hipster.paragraph).execute
+store_17 = StoreCreator.new("store_17", Faker::Hipster.paragraph).execute
+store_18 = StoreCreator.new("store_18", Faker::Hipster.paragraph).execute
+store_19 = StoreCreator.new("store_19", Faker::Hipster.paragraph).execute
+store_20 = StoreCreator.new("store_20", Faker::Hipster.paragraph).execute
+
+puts "Adding items for cats category"
+
+50.times do |index|
+  item = Item.create!(name: Faker::Cat.unique.breed,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "cat.jpg", store: store_2)
+  CategoryItem.create(item: item, category: category_10)
+end
+
+puts "Adding items for toys category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Pokemon.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "toy.jpg", store: store_3)
+  CategoryItem.create(item: item, category: category_9)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Pokemon.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "toy.jpg", store: store_4)
+  CategoryItem.create(item: item, category: category_9)
+end
+
+puts "Adding items for Sporting Goods category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "Baseball.jpg", store: store_5)
+  CategoryItem.create(item: item, category: category_8)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "Baseball.jpg", store: store_6)
+  CategoryItem.create(item: item, category: category_8)
+end
+
+puts "Adding items to the Books category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Book.unique.title,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "book.jpg", store: store_7)
+  CategoryItem.create(item: item, category: category_7)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Book.unique.title,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "book.jpg", store: store_8)
+  CategoryItem.create(item: item, category: category_7)
+end
+
+puts "Adding items to the Beer category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Beer.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "beer.jpg", store: store_9)
+  CategoryItem.create(item: item, category: category_6)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Beer.unique.name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "beer.jpg", store: store_10)
+  CategoryItem.create(item: item, category: category_6)
+end
+
+puts "Adding items to the seasonal category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "seasonal6.jpg", store: store_11)
+  CategoryItem.create(item: item, category: category_5)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Hipster.unique.word,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "seasonal5.jpg", store: store_12)
+  CategoryItem.create(item: item, category: category_5)
+end
+
+puts "Adding items to the mattress category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "mattresses2.jpg", store: store_13)
+  CategoryItem.create(item: item, category: category_4)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "mattresses1.jpg", store: store_14)
+  CategoryItem.create(item: item, category: category_4)
+end
+
+puts "Adding items to the kitchen category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "kitchen5.jpg", store: store_15)
+  CategoryItem.create(item: item, category: category_3)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "kitchen4.jpg", store: store_16)
+  CategoryItem.create(item: item, category: category_3)
+end
+
+puts "Adding items to the furniture category"
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "furniture9.jpg", store: store_17)
+  CategoryItem.create(item: item, category: category_2)
+end
+
+25.times do |index|
+  item = Item.create!(name: Faker::Commerce.unique.product_name,
+               description: Faker::Lorem.sentence(20, false, 0).chop,
+               price: rand(100..1000), image_path: "furniture10.jpg", store: store_18)
+  CategoryItem.create(item: item, category: category_2)
+end
+
+  puts "Adding items to the bath category"
+
+  25.times do |index|
+    item = Item.create!(name: Faker::Commerce.unique.product_name,
+                 description: Faker::Lorem.sentence(20, false, 0).chop,
+                 price: rand(100..1000), image_path: "bath4.jpg", store: store_20)
+    CategoryItem.create(item: item, category: category_1)
+  end
+
+  25.times do |index|
+    item = Item.create!(name: Faker::Commerce.unique.product_name,
+                 description: Faker::Lorem.sentence(20, false, 0).chop,
+                 price: rand(100..1000), image_path: "bath3.jpg", store: store_19)
+    CategoryItem.create(item: item, category: category_1)
+  end
+
+  # -----------------------------Users
+1000.times do |users|
+  name = Faker::Name.unique.name
+  username = "#{name.gsub(/\s+/, "").downcase}"
+  password = name.split.first.downcase
+  User.create(name: name, username: username, password: password, street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, country: Faker::Address.country, zip_code: Faker::Address.zip)
+  puts "Created #{name}'s account'"
+end
+
+# -----------------------------Orders
+def weighed_number(weights)
+  raise 'Probabilities must sum up to 1' unless weights.values.inject(&:+) == 1.0
+
+  u = 0.0
+  ranges = Hash[weights.map{ |v, p| [u += p, v] }]
+
+  u = rand
+  ranges.find{ |p, _| p > u }.last
+end
+
+users = User.all
+random_order_count = rand(10..20)
+users.each do |user|
+  random_order_count.times do |order|
+    t1 = Time.parse("2012-11-16 12:00:00")
+    t2 = Time.parse("2018-09-15 12:00:00")
+    created = Order.create(user_id: user.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now)
+    random = weighed_number({1 => 0.2, 2 => 0.2, 3 => 0.2, 4 => 0.2, 5 => 0.2 })
+    random.times do |add_item|
+      created.items << Item.all.sample
+    end
+    puts "Created order #{created.id} for #{created.user.name}"
+  end
+end
+
+puts "Creating the admin"
+
+User.create(name: "admin", username: "admin", password: "admin", role: "admin")
+User.create(name: "Josh", username: "josh@turing.io", password: "password")
