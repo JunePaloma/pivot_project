@@ -5,11 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-ItemOrder.destroy_all
-Item.destroy_all
-Category.destroy_all
-Order.destroy_all
-User.destroy_all
+
 
 CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal"]
 
@@ -100,5 +96,41 @@ end
 end
 
 puts "Creating the admin"
-# admin role still needs to be added
 User.create(name: "admin", username: "admin", password: "admin", role: "admin")
+
+#new seeds
+puts "Creating Store"
+store = StoreCreator.new("Uncle Frank's Original Goods", "All of Uncle Frank's original ideas").execute
+puts "Adding store_id to existing items"
+items = Item.all
+items.each do |item|
+  item.update(store_id: store.id)
+  CategoryItem.create(category: item.category, item_id: item.id)
+end
+puts "Adding Categories"
+category_6 = Category.create(name: "Beer")
+category_7 = Category.create(name: "Books")
+category_8 = Category.create(name: "Sporting Goods")
+category_9 = Category.create(name: "Toys")
+category_10 = Category.create(name: "Cats")
+
+puts "Adding stores"
+store_2 = StoreCreator.new("store_2", Faker::Hipster.paragraph).execute
+store_3 = StoreCreator.new("store_3", Faker::Hipster.paragraph).execute
+store_4 = StoreCreator.new("store_4", Faker::Hipster.paragraph).execute
+store_5 = StoreCreator.new("store_5", Faker::Hipster.paragraph).execute
+store_6 = StoreCreator.new("store_6", Faker::Hipster.paragraph).execute
+store_7 = StoreCreator.new("store_7", Faker::Hipster.paragraph).execute
+store_8 = StoreCreator.new("store_8", Faker::Hipster.paragraph).execute
+store_9 = StoreCreator.new("store_9", Faker::Hipster.paragraph).execute
+store_10 = StoreCreator.new("store_10", Faker::Hipster.paragraph).execute
+store_11 = StoreCreator.new("store_11", Faker::Hipster.paragraph).execute
+store_12 = StoreCreator.new("store_12", Faker::Hipster.paragraph).execute
+store_13 = StoreCreator.new("store_13", Faker::Hipster.paragraph).execute
+store_14 = StoreCreator.new("store_14", Faker::Hipster.paragraph).execute
+store_15 = StoreCreator.new("store_15", Faker::Hipster.paragraph).execute
+store_16 = StoreCreator.new("store_16", Faker::Hipster.paragraph).execute
+store_17 = StoreCreator.new("store_17", Faker::Hipster.paragraph).execute
+store_18 = StoreCreator.new("store_18", Faker::Hipster.paragraph).execute
+store_19 = StoreCreator.new("store_19", Faker::Hipster.paragraph).execute
+store_20 = StoreCreator.new("store_20", Faker::Hipster.paragraph).execute
