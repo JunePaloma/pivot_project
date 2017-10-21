@@ -4,7 +4,7 @@ class User < ApplicationRecord
   enum role: ["user", "admin"]
 
   validates :username, presence: :true, uniqueness: :true
-  validates :password, presence: :true
+  validates :password_digest, presence: :true
 
   def address
     "#{self.street}, #{self.city}, #{self.state}, #{self.zip_code}, #{self.country}"
