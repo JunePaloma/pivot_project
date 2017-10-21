@@ -1,6 +1,5 @@
 class Api::V1::MerchantsController < Api::V1::ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  include ActionController::MimeResponds
   before_action :restrict_access
 
   def index
