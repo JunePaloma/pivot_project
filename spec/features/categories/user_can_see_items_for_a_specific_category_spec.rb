@@ -15,14 +15,14 @@ feature "visitor can view all items" do
     item_4 = Item.create(name: "Something else" , description: "Something", price: 1000)
     CategoryItem.create(category: category3, item: item_4)
 
-    visit category_path(category1)
+    visit category_path(category1.id)
 
     expect(page).to have_content(category1.items[0].name)
     expect(page).to have_content(category1.items[1].name)
     expect(page).to_not have_content(category3.items[0].name)
     expect(page).to_not have_content(category3.items[1].name)
 
-    visit category_path(category3)
+    visit category_path(category3.id)
 
     expect(page).to have_content(category3.items[0].name)
     expect(page).to have_content(category3.items[1].name)
