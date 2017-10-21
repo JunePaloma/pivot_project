@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
 
+  # namespace :api do
+  #   namespace :v1 do
+      post '/authenticate', to: 'authentication#authenticate'
+  #   end
+  # end
+
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :users, only: [:edit, :update]
@@ -36,6 +42,5 @@ Rails.application.routes.draw do
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
-  post 'authenticate', to: 'authentication#authenticate'
   get '/:store_slug', to: 'stores#show'
 end

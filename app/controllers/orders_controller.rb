@@ -1,5 +1,5 @@
-
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_request
   before_action :require_current_user, only: [:index]
   before_action :current_admin?, only: [:cancel, :paid, :completed]
 

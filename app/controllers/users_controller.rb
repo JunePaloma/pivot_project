@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_request
   before_action :require_current_user, except: [:create]
 
   def show
