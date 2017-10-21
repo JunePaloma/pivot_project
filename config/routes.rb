@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
 
-  # namespace :api do
-  #   namespace :v1 do
-      post '/authenticate', to: 'authentication#authenticate'
-  #   end
-  # end
+  namespace :api do
+    namespace :v1 do
+      resources :merchants, only: [:index]
+    end
+  end
 
   namespace :admin do
     resources :dashboard, only: [:index]
