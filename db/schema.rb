@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021222959) do
+ActiveRecord::Schema.define(version: 20171022172436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,24 +44,22 @@ ActiveRecord::Schema.define(version: 20171021222959) do
     t.index ["store_id"], name: "index_items_on_store_id"
   end
 
+  create_table "operators", force: :cascade do |t|
+    t.string "name"
+    t.string "user_name"
+    t.integer "role", default: 0
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "store_operators", force: :cascade do |t|
-    t.string "name"
-    t.string "user_name"
-    t.bigint "store_id"
-    t.integer "role", default: 0
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["store_id"], name: "index_store_operators_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -94,5 +92,4 @@ ActiveRecord::Schema.define(version: 20171021222959) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "stores"
   add_foreign_key "orders", "users"
-  add_foreign_key "store_operators", "stores"
 end

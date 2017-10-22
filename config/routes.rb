@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     resources :operators, only:[:index, :new, :create, :destroy]
   end
 
-  get "/store_operator_login", to: "operatorsesh#new"
-  post "/store_operator_login", to: "operatorsesh#create"
-  get "/store_operator_logout", to: "operatorsesh#destroy"
+  get "/operator_login", to: "operatorsesh#new"
+  post "/operator_login", to: "operatorsesh#create"
+  get "/operator_logout", to: "operatorsesh#destroy"
 
   get "/dashboard", to: "users#show"
   get "/login", to: "sessions#new"

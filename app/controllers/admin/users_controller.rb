@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:store_operator).permit(:user_name, :name, :password)
+    params.require(:operator).permit(:user_name, :name, :password)
   end
 
 end
