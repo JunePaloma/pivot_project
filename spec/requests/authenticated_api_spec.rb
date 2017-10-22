@@ -7,9 +7,7 @@ describe 'Internal API' do
       api_token = ApiKey.create!
 
       get "http://localhost:3000/api/v1/merchants", headers: { 'Authorization' => %{Token token="#{api_token.access_token}"}}
-      # @conn = Faraday.new(url: 'http://localhost:3000') do |faraday|
-      #   faraday.headers['Authorization'] = ENV['api_key']
-      # end
+
       expect(response).to be_success
 
       merchants = JSON.parse(response.body)
