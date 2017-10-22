@@ -35,6 +35,7 @@ gem 'simple_form'
 gem 'materialize-form'
 gem 'omniauth-twitter'
 gem 'figaro'
+gem 'faraday'
 
 
 # Use Capistrano for deployment
@@ -52,6 +53,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'simplecov'
+  gem 'rails-controller-testing'
 end
 
 group :development do

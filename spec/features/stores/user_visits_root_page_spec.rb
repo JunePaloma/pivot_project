@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'User' do
   context 'visits root page' do
     scenario 'sees list of categories' do
-      category = create(:category_with_items)
+      category = Category.create(name: "I'm a category")
+      item_1 = Item.create(name: "An item" , description: "Something", price: 1000)
+      CategoryItem.create(category: category, item: item_1)
 
       visit root_path
 
