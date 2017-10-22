@@ -10,8 +10,8 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    binding.pry
     user = User.find_by(email: params[:email])
+    binding.pry
     if user && user.verification_code == params[:password][:verification_code]
       user.update(password_params)
       session[:user_id] = user.id
@@ -26,15 +26,5 @@ class PasswordsController < ApplicationController
     def password_params
       params.require(:password).permit(:password, :password_confirmation)
     end
-
-    # def passwords_not_empty?
-    #   params[:password][:password].length > 0 && params[:password][:password_confirmation].length > 0
-    # end
-
-    # def passwords_equal?
-      
-    # end
-
-
 
 end
