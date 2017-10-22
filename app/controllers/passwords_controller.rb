@@ -1,31 +1,40 @@
 class PasswordsController < ApplicationController
 
-  def show
+  def new
   end
 
-  def reset
+  def create
     user = User.find_by(email: params[:password][:email])
     ConfirmationSender.send_confirmation(user)
-    redirect_to new_confirmation_path(user_id: user.id)
+    redirect_to new_password_path(email: user.email)
   end
 
   def update
     binding.pry
-    
-    if User.exists?(verification_code: params[:user][:verification_code])
-      user = User.find_by(verification_code: params[:user][:verification_code])
+    user = User.find_by(email: params[:email])
+    if user && user.verification_code == params[:password][:verification_code]
+      user.update(password_params)
+      session[:user_id] = user.id
+      redirect_to dashboard_path
+    else
+      redirect_to new_password_path
     end
-
-    if passwords_not_empty? && passwords_equal?
-
-    end
-
   end
 
   private
 
     def password_params
-      params.require(:user).permit(:password, :password_confirmation, :verification_code)
+      params.require(:password).permit(:password, :password_confirmation)
     end
+
+    # def passwords_not_empty?
+    #   params[:password][:password].length > 0 && params[:password][:password_confirmation].length > 0
+    # end
+
+    # def passwords_equal?
+      
+    # end
+
+
 
 end
