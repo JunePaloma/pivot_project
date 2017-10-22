@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_operator
   helper_method :current_admin?
+  helper_method :current_store
   before_action :set_new_user
 
 
@@ -24,9 +25,9 @@ class ApplicationController < ActionController::Base
     @current_operator ||= StoreOperator.find(session[:operator_id]) if session[:operator_id]
   end
 
-  def current_store
-    @store_id = current_operator.store_id
-  end 
+  def operator_store
+    @operator_store = current_operator.store_id
+  end
 
   def require_current_user
     render file: "/public/404" unless current_user

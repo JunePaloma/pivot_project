@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :store_admin do
     resources :dashboard, only: [:index]
     resources :stores, only: [:edit, :update]
-    resources :operators, only:[:new, :create, :destroy]
+    resources :operators, only:[:index, :new, :create, :destroy]
   end
 
   get "/store_operator_login", to: "operatorsesh#new"
