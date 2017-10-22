@@ -15,12 +15,8 @@ feature "store operator can login and out" do
 
     click_on("Log In")
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq admin_dashboard_index_path
 
-    visit '/operator_dashboard'
-
-    expect(current_path).to eq('/operator_dashboard')
-    click_on("arrow_drop_down")
 
     expect(page).to have_content("Logged in as: #{store_mgr.username}")
     expect(page).to_not have_link("Login")

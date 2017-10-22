@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_cart
   helper_method :current_user
+  helper_method :current_operator
   helper_method :current_admin?
   before_action :set_new_user
 
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_operator
-    @current_operator ||= StoreOperator.find(operatorsesh[:operator_id]) if operatorsesh[:operator_id]
+    @current_operator ||= StoreOperator.find(session[:operator_id]) if session[:operator_id]
 
   end
 
@@ -29,6 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_admin?
-    store_operator
+    current_operator
+    @current_operator != nil
   end
+
 end

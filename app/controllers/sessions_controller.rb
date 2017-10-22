@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
 
     default_login? ? user = default_login_info : user = oauth_login_info
-    if user
+    if user.authenticated?(user)
       flash[:good_message] =  "Login Successful"
       session[:user_id] = user.id
       redirect_back(fallback_location: root_path)
