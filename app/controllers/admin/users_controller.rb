@@ -1,13 +1,13 @@
 class Admin::UsersController < Admin::BaseController
 
   def edit
-   if current_user.id != params[:id].to_i
+   if current_operator.id != params[:id].to_i
      render file: "/public/404"
    end
   end
 
   def update
-    if current_user.update(user_params)
+    if current_operator.update(params)
       flash[:good_message] = "You've successfully updated your Account"
       redirect_to admin_dashboard_index_path
     else
@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:username, :name, :password)
+    params.require(:store_operator).permit(:user_name, :name, :password)
   end
 
 end
