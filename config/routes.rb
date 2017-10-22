@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     resources :items, except: [:destroy]
     # get '/dashboard', to: "admindashboard#dashboard"
+
+  namespace :store_admin do
+    resources :dashboard, only: [:index]
+    resources :stores, only: [:edit, :update]
   end
 
   get "/store_operator_login", to: "operatorsesh#new"
