@@ -11,7 +11,6 @@ class PasswordsController < ApplicationController
 
   def update
     user = User.find_by(email: params[:email])
-    binding.pry
     if user && user.verification_code == params[:password][:verification_code]
       user.update(password_params)
       session[:user_id] = user.id
