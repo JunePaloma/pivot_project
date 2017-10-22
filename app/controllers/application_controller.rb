@@ -18,9 +18,14 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+  #
+  # def set_new_operator
+  #   @new_operator = StoreOperator.new
+  # end
 
-  def store_operator
-    
+  def current_operator
+    @current_operator ||= StoreOperator.find(operatorsesh[:operator_id]) if operatorsesh[:operator_id]
+
   end
 
   def require_current_user

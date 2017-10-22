@@ -4,14 +4,14 @@ feature "store operator can login and out" do
   scenario "when registered as a manager" do
     store_mgr = StoreOperator.create(user_name: "Busman", password: "password")
 
-    visit '/store_operator_login_path'
+    visit store_operator_login_path
 
-    click_on("Login")
+    click_on("Login as Store Operator")
 
     expect(current_path).to eq(store_operator_login_path)
 
-    fill_in "session[username]", with: store_mgr.username
-    fill_in "session[password]", with: store_mgr.password
+    fill_in "operatorsesh[username]", with: store_mgr.username
+    fill_in "operatorsesh[password]", with: store_mgr.password
 
     click_on("Log In")
 
@@ -35,9 +35,9 @@ feature "store operator can login and out" do
   scenario "registered as an admin" do
     store_admin = StoreOperator.create(user_name: "Adman", password: "password", role: 1)
 
-    visit '/store_operator_login_path'
+    visit store_operator_login_path
 
-    click_on("Login")
+    click_on("Login as Store Operator")
 
     expect(current_path).to eq(store_operator_login_path)
 
@@ -66,9 +66,9 @@ feature "store operator can login and out" do
   end
 
   scenario "if a user enters invalid credentials" do
-    visit '/store_operator'
+    visit 'store_operator_login_path'
 
-    click_on("Login")
+    click_on("Login as Store Operator")
 
     expect(current_path).to eq(root_path)
 

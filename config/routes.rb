@@ -20,16 +20,16 @@ Rails.application.routes.draw do
     # get '/dashboard', to: "admindashboard#dashboard"
   end
 
+  get "/store_operator_login", to: "operatorsesh#new"
+  post "/store_operator_login", to: "operatorsesh#create"
+  get "/store_operator_logout", to: "operatorsesh#destroy"
+
   get "/dashboard", to: "users#show"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/auth/twitter", to: "sessions#create"
   get "/auth/twitter/callback", to: "sessions#create"
-
-  get "/store_operator_login" to: "operatorsesh#new"
-  get "/store_operator_login_path" to: "operatorsesh#create"
-  get "/store_operator_logout_path" to: "operatorsesh#destroy"
 
   get '/cart', to: "carts#index", as: "cart"
   delete '/cart/:id', to: "carts#destroy", as: "cart_remove_item"
@@ -38,6 +38,6 @@ Rails.application.routes.draw do
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
-  get '/:category_name', to: 'categories#show'
+  #get '/:category_name', to: 'categories#show'
 
 end
