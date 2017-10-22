@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
 
   def edit
-   if current_user.id != params[:id].to_i
-     render file: "/public/404"
-   end
+    if current_user.id != params[:id].to_i
+      render file: "/public/404"
+    end
   end
 
   def create
@@ -37,7 +37,17 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(
+      :username,
+      :password,
+      :name,
+      :street,
+      :city,
+      :state,
+      :zip_code,
+      :email,
+      :phone
+    )
   end
 
 end
