@@ -22,8 +22,11 @@ class ApplicationController < ActionController::Base
 
   def current_operator
     @current_operator ||= StoreOperator.find(session[:operator_id]) if session[:operator_id]
-
   end
+
+  def current_store
+    @store_id = current_operator.store_id
+  end 
 
   def require_current_user
     render file: "/public/404" unless current_user
