@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, except: [:create]
+  before_action :require_current_user, except: [:new, :create]
+
+  def new
+    @user = User.new
+  end
 
   def show
 
@@ -7,9 +11,9 @@ class UsersController < ApplicationController
 
 
   def edit
-   if current_user.id != params[:id].to_i
-     render file: "/public/404"
-   end
+    if current_user.id != params[:id].to_i
+      render file: "/public/404"
+    end
   end
 
   def create
@@ -37,7 +41,18 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(
+      :username,
+      :password,
+      :password_confirmation,
+      :name,
+      :street,
+      :city,
+      :state,
+      :zip_code,
+      :email,
+      :phone
+    )
   end
 
 end
