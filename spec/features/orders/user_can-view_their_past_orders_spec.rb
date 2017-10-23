@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'as a user when I visit /orders' do
   scenario 'I see all orders belong to me and no other orders' do
-    user   = User.create(username: "Mac", password: "pattys")
-    dee    = User.create(username: "Dee", password: "birdy")
+    user   = create(:user)
+    dee    = create(:user)
 
     order1 = Order.create(user_id: user.id)
     order2 = Order.create(user_id: user.id)
@@ -15,6 +15,7 @@ feature 'as a user when I visit /orders' do
 
     fill_in "session[username]", with: user.username
     fill_in "session[password]", with: user.password
+
     click_on("Log In")
 
     visit '/orders'

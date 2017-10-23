@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20171021182545) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +82,9 @@ ActiveRecord::Schema.define(version: 20171021182545) do
     t.string "uid"
     t.string "oauth_token"
     t.string "oauth_token_secret"
+    t.string "verification_code"
+    t.string "phone"
+    t.string "email"
   end
 
   add_foreign_key "category_items", "categories"
