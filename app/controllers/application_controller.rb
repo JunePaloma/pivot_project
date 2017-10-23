@@ -22,11 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_operator
-    @current_operator ||= StoreOperator.find(session[:operator_id]) if session[:operator_id]
-  end
-
-  def operator_store
-    @operator_store = current_operator.store_id
+    @current_operator ||= Operator.find(session[:operator_id]) if session[:operator_id]
   end
 
   def require_current_user
@@ -37,5 +33,21 @@ class ApplicationController < ActionController::Base
     current_operator
     @current_operator != nil
   end
+
+  private
+
+    def authorize!
+      user = find_user
+        permission = PermissionsService.new(user, params[:controller], params[:action])
+      raise ActionController::RoutingError.new("Not Found") unless permission.authorized?
+    end
+
+    def find_user
+      if @current_operator
+        return @current_operator
+      elsif @current_user
+        return @current_user
+      end   
+    end
 
 end

@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :operator do
-    name "MyString"
-    user_name "MyString"
+    name "Business Manager"
+    user_name "BusMan"
     role 1
     email "MyString"
-    password ""
+    password "password"
   end
 end

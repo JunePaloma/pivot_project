@@ -101,4 +101,4 @@ end
 
 puts "Creating the admin"
 # admin role still needs to be added
-User.create(name: "admin", username: "admin", password: "admin", role: "admin")
+Operator.create(name: "admin", user_name: "admin", password: "admin", role:1)

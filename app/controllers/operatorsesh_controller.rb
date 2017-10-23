@@ -4,8 +4,7 @@ class OperatorseshController < ApplicationController
   end
 
   def create
-    operator = StoreOperator.find_by(user_name: params[:operatorsesh][:user_name])
-
+    operator = Operator.find_by(user_name: params[:operatorsesh][:user_name])
     if authenticated?(operator)
       session[:operator_id] = operator.id
       flash[:good_message] =  "Welcome back #{operator.name}"

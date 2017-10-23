@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "store operator can login and out" do
   scenario "when registered as a manager" do
-    store_mgr = StoreOperator.create(user_name: "Busman", password: "password")
+    store_mgr = Operator.create(user_name: "Busman", password: "password")
 
     visit operator_login_path
 
@@ -22,7 +22,7 @@ feature "store operator can login and out" do
   end
 
   scenario "registered as an admin" do
-    store_admin = StoreOperator.create(user_name: "Adman", password: "password", role: 1)
+    store_admin = Operator.create(user_name: "Adman", password: "password", role: 1)
 
     visit operator_login_path
 

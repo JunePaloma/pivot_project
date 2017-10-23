@@ -1,6 +1,6 @@
-<h2>Sign In</h2>
+<h2>Store Operator Sign In</h2>
 
-<%= form_for(:operatorsesh, url: operator_login_path) do |f| %>
+<%= form_for(:operatorsesh, "/operator_login") do |f| %>
   <%= f.label :user_name %>
   <%= f.text_field :user_name %>
   <%= f.label :password %>
