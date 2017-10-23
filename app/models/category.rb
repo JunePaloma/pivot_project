@@ -4,9 +4,7 @@ class Category < ApplicationRecord
   validates :name, presence: :true, uniqueness: :true
 
   def image
-    items.select('items.*')
-       .where("category_items.category_id = #{self.id}")
-      .order('RANDOM()')
+    items.order('RANDOM()')
       .limit(1)
       .first
       .image_path
