@@ -15,15 +15,16 @@ feature "visitor can create account" do
 
     click_on "To checkout login or create an account"
 
-    click_on(id: 'cart_create_button', :match => :first)
+    click_on "Sign Up For An Account"
 
-    within('#cart_create_form') do
-      fill_in "user[username]", with: "Charlie"
-      fill_in "user[password]", with: "I love the waitress"
-      fill_in "user[password_confirmation]", with: "I love the waitress"
-    end
+    fill_in "user[username]", with: "Charlie"
+    fill_in "user[name]", with: "Chuck"
+    fill_in "user[email]", with: "charlie@charlie.com"
+    fill_in "user[phone]", with: "5555555555"
+    fill_in "user[password]", with: "I love the waitress"
+    fill_in "user[password_confirmation]", with: "I love the waitress"
 
-    click_on(id: "cart_create_complete")
+    click_on "Create Account"
 
     click_on "shopping_cart"
 
@@ -46,15 +47,16 @@ feature "visitor can create account" do
 
     click_on "To checkout login or create an account"
 
-    click_on(id: 'cart_create_button', :match => :first)
+    click_on "Sign Up For An Account"
 
-    within('#cart_create_form') do
-      fill_in "user[username]", with: "Charlie"
-      fill_in "user[password]", with: "I love the waitress"
-      fill_in "user[password_confirmation]", with: "I love the waitress"
-    end
+    fill_in "user[username]", with: "Charlie"
+    fill_in "user[name]", with: "Chuck"
+    fill_in "user[email]", with: "charlie@charlie.com"
+    fill_in "user[phone]", with: "5555555555"
+    fill_in "user[password]", with: "I love the waitress"
+    fill_in "user[password_confirmation]", with: "I love the waitress"
 
-    click_on(id: "cart_create_complete")
+    click_on "Create Account"
 
     click_on "shopping_cart"
 
