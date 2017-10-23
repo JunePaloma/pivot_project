@@ -19,7 +19,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'jwt'
+gem 'simple_command'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -34,6 +35,7 @@ gem 'simple_form'
 gem 'materialize-form'
 gem 'omniauth-twitter'
 gem 'figaro'
+gem 'faraday'
 gem 'twilio-ruby'
 
 
@@ -52,6 +54,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'simplecov'
+  gem 'rails-controller-testing'
 end
 
 group :development do

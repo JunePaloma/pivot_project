@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 # CATEGORIES = ["Bath", "Furniture", "Kitchen", "Mattresses", "Seasonal"]
 #
 # CATEGORIES.each do |category|
