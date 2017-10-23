@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:create]
   resources :categories, only: [:show], param: :category_name
-  resources :stores, only: [:index, :show]
+  resources :stores, only: [:index]
   resources :users, only: [:new, :create, :update, :edit]
 
   resources :orders, only: [:index, :show, :create]
@@ -41,5 +41,5 @@ Rails.application.routes.draw do
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
-  get '/:store_slug', to: 'stores#show'
+  get '/:store_slug', to: 'stores#show', as: 'store'
 end
