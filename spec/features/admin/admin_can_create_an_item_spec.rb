@@ -1,7 +1,7 @@
 require 'rails_helper'
 
  describe "from the items index" do
-  xscenario "an admin can create an item" do
+  scenario "an admin can create an item" do
     admin   = create(:user, role: 1)
     category = create(:category)
 
@@ -16,7 +16,7 @@ require 'rails_helper'
     fill_in "item[name]", with: "NewGrossCouch"
     fill_in "item[description]", with: "Newdescription"
     fill_in "item[price]", with: 100.0
-    fill_in "item[]"
+    # fill_in "item[]"
 
     page.select "#{category.name}", :from => "item_category_id"
     fill_in "item[image_path]", with: "garbage.jpg"
@@ -27,7 +27,7 @@ require 'rails_helper'
     expect(page).to have_content("NewGrossCouch")
   end
 
-  xscenario "an admin can create an item without specifying image" do
+  scenario "an admin can create an item without specifying image" do
     admin   = create(:user, role: 1)
     category = create(:category)
 
@@ -52,7 +52,7 @@ require 'rails_helper'
     expect(Item.first.image_path).to eq("garbage.jpg")
   end
 
-  xscenario "an admin can't create an item without a unique name" do
+  scenario "an admin can't create an item without a unique name" do
     admin    = create(:user, role: 1)
     category = create(:category)
     item     = Item.create(name: "NewGrossCouch", description: "TheThing", image_path: "garbage.jpg", price: 77, category: category)
