@@ -36,6 +36,7 @@ gem 'materialize-form'
 gem 'omniauth-twitter'
 gem 'figaro'
 gem 'faraday'
+gem 'twilio-ruby'
 
 
 # Use Capistrano for deployment

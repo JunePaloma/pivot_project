@@ -295,11 +295,20 @@ end
   end
 
   # -----------------------------Users
+
+  puts "Adding Phone and email to existing users"
+  users = User.all
+  users.each do |user|
+    user.update(email: Faker::Internet.email, phone: Faker::PhoneNumber.phone_number)
+  end
+
+  #_____________creatiing_new_users
+
 1000.times do |users|
   name = Faker::Name.unique.name
   username = "#{name.gsub(/\s+/, "").downcase}"
   password = name.split.first.downcase
-  User.create(name: name, username: username, password: password, street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, country: Faker::Address.country, zip_code: Faker::Address.zip)
+  User.create(name: name, username: username, password: password, street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, country: Faker::Address.country, zip_code: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email)
   puts "Created #{name}'s account'"
 end
 
@@ -328,8 +337,3 @@ users.each do |user|
     puts "Created order #{created.id} for #{created.user.name}"
   end
 end
-
-puts "Creating the admin"
-
-User.create(name: "admin", username: "admin", password: "admin", role: "admin")
-User.create(name: "Josh", username: "josh@turing.io", password: "password")
