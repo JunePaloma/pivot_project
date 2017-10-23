@@ -13,8 +13,7 @@ feature "as a logged in admin" do
 
     visit '/admin/dashboard'
 
-    click_on "#{user1.orders.first.id}"
-
+    click_on "#{user1.orders.first.id}", match: :first
 
     expect(page).to have_content(user1.name)
     expect(page).to have_content(user1.address)
