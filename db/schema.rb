@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(version: 20171021184232) do
     t.string "uid"
     t.string "oauth_token"
     t.string "oauth_token_secret"
+    t.string "verification_code"
+    t.string "phone"
+    t.string "email"
   end
 
   add_foreign_key "category_items", "categories"
