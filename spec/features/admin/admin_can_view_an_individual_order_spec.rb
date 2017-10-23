@@ -15,6 +15,7 @@ feature "as a logged in admin" do
 
     click_on "#{user1.orders.first.id}"
 
+
     expect(page).to have_content(user1.name)
     expect(page).to have_content(user1.address)
     expect(page).to have_content(user1.orders.first.created_at.to_formatted_s(:long_ordinal))
