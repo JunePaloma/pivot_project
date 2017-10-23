@@ -5,7 +5,7 @@ feature "as a logged in admin" do
     admin   = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    user1   = create(:user_with_orders)
+    user1   = create(:user_with_orders, name: 'Aaron')
 
     user1.orders.each do |order|
       order.items << create_list(:item, 3)
@@ -13,7 +13,7 @@ feature "as a logged in admin" do
 
     visit '/admin/dashboard'
 
-    click_on "#{user1.orders.first.id}"
+    click_on "Order: #{user1.orders.first.id}"
 
     expect(page).to have_content(user1.name)
     expect(page).to have_content(user1.address)
