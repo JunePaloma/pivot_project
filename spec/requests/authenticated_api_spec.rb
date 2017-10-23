@@ -6,7 +6,7 @@ describe 'Internal API' do
       create_list(:store, 5)
       api_token = ApiKey.create!
 
-      get "http://localhost:3000/api/v1/merchants", headers: { 'Authorization' => %{Token token="#{api_token.access_token}"}}
+      get "http://localhost:3000/api/v1/merchants", headers: { 'Authorization' => %{Token token="#{ENV['api_key']}"}}
 
       expect(response).to be_success
 

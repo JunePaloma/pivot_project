@@ -11,7 +11,8 @@ class Api::V1::MerchantsController < Api::V1::ApplicationController
 
     def restrict_access
       authenticate_or_request_with_http_token do |token, options|
-        ApiKey.exists?(access_token: token)
+        ENV['API_KEY'] == token
+        # ApiKey.exists?(access_token: token)
       end
     end
 end
