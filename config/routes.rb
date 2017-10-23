@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # get '/', :to => 'welcome#index', :as => 'welcome'
 
   resources :items, only: [:index, :show]
-  # resources :categories, only: [:index, :show]
   resources :carts, only: [:create]
+  resources :categories, only: [:show], param: :category_name
   resources :stores, only: [:index, :show]
   resources :users, only: [:new, :create, :update, :edit]
 
@@ -40,6 +40,5 @@ Rails.application.routes.draw do
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
-  get '/:category_name', to: 'categories#show'
-
+  get '/:store_slug', to: 'stores#show'
 end
