@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_dashboard_index_path
     else
       flash[:bad_message] = "Update failed"
-      redirect_to edit_admin_user_path(current_user)
+      redirect_to edit_admin_user_path(current_operator)
     end
   end
 

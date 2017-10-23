@@ -26,7 +26,7 @@ feature "store operator can login and out" do
 
     visit operator_login_path
 
-    fill_in "operatorsech[user_name]", with: store_admin.user_name
+    fill_in "operatorsesh[user_name]", with: store_admin.user_name
     fill_in "operatorsesh[password]", with: store_admin.password
 
     click_on("Login as Store Operator")
