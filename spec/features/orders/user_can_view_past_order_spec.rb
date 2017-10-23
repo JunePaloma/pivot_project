@@ -2,11 +2,21 @@ require 'rails_helper'
 
 feature 'as a user when I visit /orders' do
   scenario 'I can click on an individual past order' do
-    user   = create(:user_with_orders)
+    user = create(:user)
+    order_1 = Order.create(user: user)
+    order_2 = Order.create(user: user)
+    category = Category.create(name: "category")
+    item_1 = Item.create(name: "An item" , description: "Something", price: 1000)
+    CategoryItem.create(category: category, item: item_1)
+    ItemOrder.create(item_id: item_1.id, order_id: order_1.id)
+    ItemOrder.create(item_id: item_1.id, order_id: order_2.id)
 
-    user.orders.each do |order|
-      order.items << create_list(:item, 3)
-    end
+
+    # user   = create(:user_with_orders)
+    #
+    # user.orders.each do |order|
+    #   order.items << create_list(:item, 3)
+    # end
 
     visit '/'
 
@@ -22,11 +32,9 @@ feature 'as a user when I visit /orders' do
     expect(current_path).to eq(order_path(user.orders.first))
 
     expect(page).to have_content(user.orders.first.items.first.name)
-    expect(page).to have_content(user.orders.first.items.second.name)
-    expect(page).to have_content(user.orders.first.items.third.name)
     expect(page).to have_content(user.orders.first.status.humanize)
     # expect(page).to have_content("$150.00")
-    expect(page).to have_content("$50.00")
+    expect(page).to have_content("$1,000.00")
     expect(page).to have_content(user.orders.first.created_at.to_formatted_s(:long_ordinal))
   end
 end
