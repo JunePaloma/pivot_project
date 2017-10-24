@@ -63,5 +63,4 @@ class PermissionsService
     return true if controller == "orders" && action.in?(["index", "show", "create"])
     return true if controller == "user" && action.in?(%w(edit update))
   end
-
 end
