@@ -11,8 +11,9 @@ class PermissionsService
     if user.platform_admin?
       platform_admin_permissions
 
-    elsif user.business_admin?
+    elsif user.admin?
       business_admin_permissions
+    elsif user.manager?
     elsif user.registered?
       all_visitor_permissions
       registered_user_permissions
@@ -48,8 +49,9 @@ class PermissionsService
   def business_manager_permissions
     return true if controller == "orders" && action.in?(["cancel", "paid", "completed"])
     return true if controller == "operatorsesh"
-    return true if controller == "admin/stores"
+    return true if controller == "admin/orders"
     return true if controller == "admin/dashboard"
+    return true if controller == "admin/items"
 
   end
 
