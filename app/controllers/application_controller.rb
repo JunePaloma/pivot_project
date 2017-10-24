@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin?
   helper_method :current_store
   before_action :set_new_user
+  before_action :authorize!
 
 
 
@@ -47,7 +48,7 @@ class ApplicationController < ActionController::Base
         return @current_operator
       elsif @current_user
         return @current_user
-      end   
+      end
     end
 
 end

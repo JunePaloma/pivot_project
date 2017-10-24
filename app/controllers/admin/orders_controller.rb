@@ -6,7 +6,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def index
-    store = Store.find(current_operator.store_id)
-    @orders = store.find_orders
+    stores = Store.where(id: current_operator.store_id)
+    @orders = stores.find_orders
   end
 end
