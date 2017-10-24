@@ -6,16 +6,20 @@ class PermissionsService
   end
 
   def authorized?
-
-
+    all_visitor_permissions
     if user.platform_admin?
       platform_admin_permissions
-
+      business_admin_persmissions
+      business_manager_permissions
+      registered_user_permissions
     elsif user.admin?
       business_admin_permissions
+      business_manager_permissions
+      registered_user_permissions
     elsif user.manager?
+      business_manager_permissions
+      registered_user_permissions
     elsif user.registered?
-      all_visitor_permissions
       registered_user_permissions
     else
     return false
