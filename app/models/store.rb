@@ -4,6 +4,6 @@ class Store < ApplicationRecord
   has_many :operators, through: :store_operators
 
   def find_orders
-    items.select('orders.*')joins(:orders).where("items.store_id = #{self.id}")
+    items.select('orders.*').joins(:orders).where("items.store_id = #{self.id}")
   end
 end

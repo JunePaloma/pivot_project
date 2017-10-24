@@ -30,7 +30,9 @@ feature "store operator can login and out" do
     expect(page).to have_content("Logged in as: Administrator")
     expect(current_path).to eq(admin_dashboard_index_path)
 
-    expect(page).to have_link("Mark as paid")    
+    expect(page).to have_content("Mark as Paid")
+
+    click_on("arrow_drop_down")
 
     click_on "Logout"
     expect(current_path).to eq(root_path)
@@ -40,8 +42,6 @@ feature "store operator can login and out" do
 
   scenario "if a user enters invalid credentials" do
     visit operator_login_path
-
-
 
     expect(current_path).to eq(operator_login_path)
 

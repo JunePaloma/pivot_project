@@ -12,6 +12,7 @@ class OperatorseshController < ApplicationController
       redirect_to(admin_dashboard_index_path)
     else
       flash[:bad_message] = "Login Unsuccessful"
+      redirect_to(operator_login_path)
     end
   end
 
