@@ -5,17 +5,13 @@ feature "store operator can login and out" do
     store_mgr = Operator.create(user_name: "Busman", password: "password")
 
     visit operator_login_path
-
-    click_on("Login as Store Operator")
-
     expect(current_path).to eq(operator_login_path)
 
     fill_in "operatorsesh[user_name]", with: store_mgr.user_name
     fill_in "operatorsesh[password]", with: store_mgr.password
 
-    click_on("Log In")
-
-    expect(page).to have_content("Logged in as: Adminstrator")
+    click_on("Login as Store Operator")
+    expect(page).to have_content("Logged in as: Administrator")
     expect(current_path).to eq(admin_dashboard_index_path)
 
 
@@ -30,15 +26,11 @@ feature "store operator can login and out" do
     fill_in "operatorsesh[password]", with: store_admin.password
 
     click_on("Login as Store Operator")
-    expect(page).to have_content("Logged in as: Adminstrator")
-    expect(current_path).to eq(operator_dashboard_path)
 
+    expect(page).to have_content("Logged in as: Administrator")
+    expect(current_path).to eq(admin_dashboard_index_path)
 
-
-    expect(page).to have_link("Visit store manager dashboard")
-    expect(page).to have_link("Logout")
-    expect(page).to have_link("Update store informaion")
-    expect(page).to have_link("Manage store operators")
+    expect(page).to have_link("Mark as paid")    
 
     click_on "Logout"
     expect(current_path).to eq(root_path)
@@ -49,14 +41,14 @@ feature "store operator can login and out" do
   scenario "if a user enters invalid credentials" do
     visit operator_login_path
 
-    click_on("Login as Store Operator")
+
 
     expect(current_path).to eq(operator_login_path)
 
     fill_in "operatorsesh[user_name]", with: "invalid_user_name"
     fill_in "operatorsesh[password]", with: "invalid_password"
 
-    click_on("Log In")
+    click_on("Login as Store Operator")
 
     expect(page).to have_content("Login Unsuccessful")
   end

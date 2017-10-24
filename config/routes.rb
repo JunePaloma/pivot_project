@@ -15,16 +15,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :users, only: [:edit, :update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :index]
     resources :items, except: [:destroy]
+    resources :stores, only: [:edit, :update]
+    resources :operators, only:[:index, :new, :create, :destroy]
     # get '/dashboard', to: "admindashboard#dashboard"
   end
 
-  namespace :store_admin do
-    resources :dashboard, only: [:index]
-    resources :stores, only: [:edit, :update]
-    resources :operators, only:[:index, :new, :create, :destroy]
-  end
 
   get "/operator_login", to: "operatorsesh#new"
   post "/operator_login", to: "operatorsesh#create"
