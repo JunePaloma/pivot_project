@@ -41,6 +41,7 @@ class User < ApplicationRecord
 
   def platform_admin?
     return false
+  end
 
   def oauth_login
     oauth_token.present?

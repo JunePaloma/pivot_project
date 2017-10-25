@@ -62,6 +62,6 @@ class PermissionsService
 
   def registered_user_permissions
     return true if controller == "orders" && action.in?(["index", "show", "create"])
-    return true if controller == "user" && action.in?(%w(edit update))
+    return true if controller == "users" && action.in?(%w(edit update show))
   end
 end
