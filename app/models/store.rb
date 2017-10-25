@@ -1,4 +1,5 @@
 class Store < ApplicationRecord
+  validates :name, uniqueness: true, presence: true
   has_many :items
   has_many :store_operators
   has_many :operators, through: :store_operators

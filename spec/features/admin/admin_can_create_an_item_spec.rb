@@ -15,7 +15,7 @@ require 'rails_helper'
     fill_in "item[name]", with: "NewGrossCouch"
     fill_in "item[description]", with: "Newdescription"
     fill_in "item[price]", with: 100.0
-    fill_in "item[]"
+    # fill_in "item[]"
 
     page.select "#{category.name}", :from => "item_category_id"
     fill_in "item[image_path]", with: "garbage.jpg"

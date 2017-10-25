@@ -3,7 +3,11 @@ class User < ApplicationRecord
   has_many :orders
 
   validates :username, presence: :true, uniqueness: :true
-  validates :password, presence: :true
+  validates :password_digest, presence: :true
+  validates :password, presence: :true, on: :create
+  validates :phone, presence: :true, on: :create, unless: :oauth_login
+  validates :email, presence: :true, on: :create, unless: :oauth_login
+  validates :name, presence: :true, on: :create
 
   def address
     "#{self.street}, #{self.city}, #{self.state}, #{self.zip_code}, #{self.country}"
@@ -37,6 +41,9 @@ class User < ApplicationRecord
 
   def platform_admin?
     return false
+
+  def oauth_login
+    oauth_token.present?
   end
 
 end

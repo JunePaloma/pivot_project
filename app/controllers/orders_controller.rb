@@ -1,4 +1,3 @@
-
 class OrdersController < ApplicationController
   before_action :require_current_user, only: [:index]
   before_action :current_admin?, only: [:cancel, :paid, :completed]

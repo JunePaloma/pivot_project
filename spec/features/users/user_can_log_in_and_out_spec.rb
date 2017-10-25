@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "user can login and out" do
   scenario "if already registered" do
-    user = User.create(username: "Mac", password: "pattys")
+    user = create(:user)
 
     visit '/'
 
@@ -56,7 +56,5 @@ feature "user can login and out" do
 
     expect(page).to have_content("Login Successful")
     expect(page).to have_content("Logged in as: Josh")
-
-
   end
 end
