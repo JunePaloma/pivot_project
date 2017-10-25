@@ -1,4 +1,4 @@
-class StoreAdmin::OperatorsController < BaseController
+class Admin::OperatorsController < ApplicationController
   def new
   end
 
@@ -12,7 +12,7 @@ class StoreAdmin::OperatorsController < BaseController
   end
 
   def update
-    if current_operator.update(params)
+    if current_operator.update(operator_params)
       flash[:good_message] = "You've successfully updated your Account"
       redirect_to admin_dashboard_index_path
     else
@@ -25,7 +25,7 @@ class StoreAdmin::OperatorsController < BaseController
   end
   private
 
-  def user_params
+  def operator_params
     params.require(:operator).permit(:user_name, :name, :password)
   end
 
