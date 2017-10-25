@@ -21,11 +21,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :users, only: [:edit, :update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :index]
     resources :items, except: [:destroy]
+    resources :stores, only: [:edit, :update]
+    resources :operators
     # get '/dashboard', to: "admindashboard#dashboard"
   end
+
+
+  get "/operator_login", to: "operatorsesh#new"
+  post "/operator_login", to: "operatorsesh#create"
+  get "/operator_logout", to: "operatorsesh#destroy"
 
   get "/dashboard", to: "users#show"
   get "/login", to: "sessions#new"
@@ -47,5 +53,6 @@ Rails.application.routes.draw do
   post '/orders/cancel/:order_id', to: "orders#cancel", as: "order_cancel"
   post '/orders/paid/:order_id', to: "orders#paid", as: "order_paid"
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
+
   get '/:store_slug', to: 'stores#show', as: 'store'
 end

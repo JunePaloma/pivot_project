@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :orders
-  enum role: ["user", "admin"]
 
   validates :username, presence: :true, uniqueness: :true
   validates :password_digest, presence: :true
@@ -26,6 +25,22 @@ class User < ApplicationRecord
     }
     user.save
     user
+  end
+
+  def registered?
+   return true if self.persisted?
+  end
+
+  def manager?
+    return false
+  end
+
+  def admin?
+    return false
+  end
+
+  def platform_admin?
+    return false
   end
 
   def oauth_login

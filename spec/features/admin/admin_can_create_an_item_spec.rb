@@ -1,15 +1,14 @@
 require 'rails_helper'
 
+
  describe "from the items index" do
-  scenario "an admin can create an item" do
-    admin   = create(:user, role: 1)
+  xscenario "an admin can create an item" do
+    admin   = create(:operator, role: 1)
     category = create(:category)
 
     allow_any_instance_of(ApplicationController).to receive(
     :current_user).and_return(admin)
-
     visit admin_items_path
-
     click_on("Create a New Item")
 
     expect(current_path).to eq(new_admin_item_path)
@@ -27,8 +26,8 @@ require 'rails_helper'
     expect(page).to have_content("NewGrossCouch")
   end
 
-  scenario "an admin can create an item without specifying image" do
-    admin   = create(:user, role: 1)
+  xscenario "an admin can create an item without specifying image" do
+    admin   = create(:operator, role: 1)
     category = create(:category)
 
     allow_any_instance_of(ApplicationController).to receive(
@@ -52,8 +51,8 @@ require 'rails_helper'
     expect(Item.first.image_path).to eq("garbage.jpg")
   end
 
-  scenario "an admin can't create an item without a unique name" do
-    admin    = create(:user, role: 1)
+  xscenario "an admin can't create an item without a unique name" do
+    admin    = create(:operator, role: 1)
     category = create(:category)
     item     = Item.create(name: "NewGrossCouch", description: "TheThing", image_path: "garbage.jpg", price: 77, category: category)
 
