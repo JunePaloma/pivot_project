@@ -2,20 +2,15 @@ require 'rails_helper'
 
 feature "as a logged in admin" do
   scenario "they are redirected to the admin dashboard after they log in" do
-    admin   = create(:user, role: 1)
+    admin   = create(:operator)
 
-    visit '/'
+    visit operator_login_path
+    expect(current_path).to eq(operator_login_path)
 
-    click_on("Login")
+    fill_in "operatorsesh[user_name]", with: admin.user_name
+    fill_in "operatorsesh[password]", with: admin.password
 
-    expect(current_path).to eq(root_path)
-
-    fill_in "session[username]", with: admin.username
-    fill_in "session[password]", with: admin.password
-
-    click_on("Log In")
-
-    visit '/admin/dashboard'
+    click_on("Login as Store Operator")
 
     expect(current_path).to eq('/admin/dashboard')
 

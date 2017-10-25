@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_operator
-    @current_operator != nil
+    # @current_operator != nil
   end
 
   private
