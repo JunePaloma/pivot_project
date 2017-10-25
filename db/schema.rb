@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20171024024137) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "category_items", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_category_items_on_category_id"
+    t.index ["item_id"], name: "index_category_items_on_item_id"
+  end
+
   create_table "item_orders", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "item_id"
@@ -93,8 +100,13 @@ ActiveRecord::Schema.define(version: 20171024024137) do
     t.string "uid"
     t.string "oauth_token"
     t.string "oauth_token_secret"
+    t.string "verification_code"
+    t.string "phone"
+    t.string "email"
   end
 
+  add_foreign_key "category_items", "categories"
+  add_foreign_key "category_items", "items"
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
   add_foreign_key "items", "categories"

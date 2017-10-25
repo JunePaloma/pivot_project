@@ -8,6 +8,8 @@ class Operator < ApplicationRecord
     self.role == "admin"
   end
 
-
+  def registered?
+    return false
+  end
 
 end
