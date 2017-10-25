@@ -2,6 +2,7 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all
+    binding.pry
   end
 
   def show

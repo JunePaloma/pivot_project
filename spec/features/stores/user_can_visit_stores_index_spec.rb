@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "User visits stores index" do
   scenario "and can see all stores" do
-    create_list(:store, 5)
+    create_list(:store, 2)
     first_store = Store.first
     items = create_list(:item, 5)
     first_store.items << items

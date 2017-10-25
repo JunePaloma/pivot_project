@@ -1,8 +1,6 @@
-# Uncle Frank's Emporium of Garbage
+# Uncle Frank's Trash Emporium
+This is a brownfield project to change an e-commerce site for a trash store into a multitenancy site with 20 stores. The repo for the original project can be found at [Github](https://github.com/vaidashi/uncle_franks_emporium). Oauth login and two factor authentication were also added to the original code base as well as an internal api used in analytics dashboards for business and platform managers. The project spec can be found here [Spec](http://backend.turing.io/module3/projects/the_pivot).
 
-Welcome to the greatest emporium of garbage that has ever been emporium'd.  Behold our awesome selection of nothing but the finest trash. We can assure you, if you want garbage, you want our garbage. View all, view by categories, login, buy garbage. You name it, our site does it. You will never look at garbage, or Craigslist, the same way.
-
-Site built with Ruby on Rails utilizing ActiveRecord on Postgresql. Site is primarily dominated by the item and categories pages, but includes basic capabilities to create users and login. Once logged in a user is able to edit their own page, but nobody else. By logging into the site as admin/admin, either locally or on Heroku, you can access the admin dashboard page. This page allows you to see the details of all the orders that have been created, as well as the ability to edit items and your user information.
 
 ### Prerequisites to Run Locally
 
@@ -21,14 +19,14 @@ Site built with Ruby on Rails utilizing ActiveRecord on Postgresql. Site is prim
 
 ### Visit Online
 
- * Launch on - [Heroku](https://pacific-citadel-44047.herokuapp.com)
+ * Launch on - [Heroku](https://uncle-franks-emporium.herokuapp.com/)
 
 ## Authors
 
-* **Ash Vaid**  - [Github](https://github.com/vaidashi)
-* **Brandon Stewart** - [Github](https://github.com/boveus)
-* **Danny Trujillo** - [Github](https://github.com/djtrujillo)
-* **Jay P Hodges** - [Github](https://github.com/jayphodges)
+* **Kali Borkoski**  - [Github](https://github.com/JunePaloma)
+* **Mike Heft** - [Github](https://github.com/mikeydeuce)
+* **Aaron Hursh** - [Github](https://github.com/amhursh)
+* **Becki Srofe** - [Github](https://github.com/blsrofe)
 
 ## Acknowledgments
 
@@ -37,7 +35,3 @@ Site built with Ruby on Rails utilizing ActiveRecord on Postgresql. Site is prim
 ### Built With
 
  * Rails, Ruby, ActiveRecord, HTML, CSS, ERB, Postgresql, and Heroku.
-
-### Contributing
-
- * Want to contribute? Then you probably should have asked us earlier.
