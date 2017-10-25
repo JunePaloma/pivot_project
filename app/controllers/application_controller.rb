@@ -44,10 +44,10 @@ class ApplicationController < ActionController::Base
     end
 
     def find_user
-      if @current_operator
-        return @current_operator
-      elsif @current_user
-        return @current_user
+      if current_operator
+        return current_operator
+      elsif current_user
+        return current_user
       end
     end
 

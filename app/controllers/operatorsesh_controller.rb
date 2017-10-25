@@ -5,7 +5,7 @@ class OperatorseshController < ApplicationController
   end
 
   def create
-    operator = Operator.find_by(user_name: params[:operatorsesh][:user_name])
+    operator = Operator.find_by(operator_params)
     if authenticated?(operator)
       session[:operator_id] = operator.id
       flash[:good_message] =  "Welcome back #{operator.name}"
@@ -22,6 +22,10 @@ class OperatorseshController < ApplicationController
   end
 
   private
+ def operator_params
+   params.fetch(:operator, Hash.new).permit(params[:operatorsesh][:user_name], params[:operatorsesh][:password])
+ end
+
   def authenticated?(operator)
     operator != nil && operator.authenticate(params[:operatorsesh][:password])
   end

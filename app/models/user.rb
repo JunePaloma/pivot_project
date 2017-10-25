@@ -27,8 +27,4 @@ class User < ApplicationRecord
    return true if self.persisted?
   end
 
-  def platform_admin?
-    return true if self.platform_admin == true
-  end
-
 end
