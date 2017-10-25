@@ -4,8 +4,12 @@ feature "User visits stores index" do
   scenario "and can see all stores" do
     create_list(:store, 5)
     first_store = Store.first
+    items = create_list(:item, 5)
+    first_store.items << items
     first_store.update(name: "Charlie's Couch Corner")
     last_store = Store.last
+    items2 = create_list(:item, 5)
+    last_store.items << items2
     last_store.update(name: "Sweet Dee's Birdhouses")
 
     visit '/'
