@@ -27,4 +27,16 @@ class User < ApplicationRecord
    return true if self.persisted?
   end
 
+  def manager?
+    return false
+  end
+
+  def admin?
+    return false
+  end
+
+  def platform_admin?
+    return false
+  end
+
 end
