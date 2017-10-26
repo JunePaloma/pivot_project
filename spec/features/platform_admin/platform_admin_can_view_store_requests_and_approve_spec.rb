@@ -28,8 +28,9 @@ describe 'Platform Admin can view all store requests' do
 
     within(".request#{sr1.id}") do
       click_on 'Decline', match: :first
-      expect(page).to have_content("Declined")
     end
+
+    expect(page).to have_content("Declined")
 
     within(".request#{sr2.id}") do
       click_on 'Approve', match: :first

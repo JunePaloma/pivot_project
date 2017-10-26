@@ -44,7 +44,7 @@ class PermissionsService
   def platform_admin_permissions
     return true if controller == "dashboard" && action.in?(["index"])
     return true if controller == "stores" && action.in?(%w(new create destroy))
-    return true if controller == "admin/store_requests" && action.in?(%w(index))
+    return true if controller == "admin/store_requests" && action.in?(%w(index decline))
   end
 
   def business_admin_permissions
