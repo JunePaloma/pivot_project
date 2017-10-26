@@ -2,15 +2,13 @@ require 'rails_helper'
 
 feature "User visits stores index" do
   scenario "and can see all stores" do
-    create_list(:store, 2)
-    first_store = Store.first
+    first_store = StoreCreator.new("Charlies Couch Corner", "A store with couches").execute
     items = create_list(:item, 5)
     first_store.items << items
-    first_store.update(name: "Charlie's Couch Corner")
-    last_store = Store.last
+    last_store = StoreCreator.new("Sweet Dee's Birdhouses", "A store with birdhouses").execute
     items2 = create_list(:item, 5)
     last_store.items << items2
-    last_store.update(name: "Sweet Dee's Birdhouses")
+    binding.pry
     visit '/'
 
     click_on 'View Stores'
