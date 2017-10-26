@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   scope :completed, -> { where(status: "completed")}
 
   def self.create_from_items(items, current_user)
+    binding.pry
     order = Order.create(user_id: current_user.id)
     items.each do |item, quantity|
         quantity.times do
