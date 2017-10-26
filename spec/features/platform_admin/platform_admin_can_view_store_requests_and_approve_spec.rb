@@ -34,10 +34,11 @@ describe 'Platform Admin can view all store requests' do
 
     within(".request#{sr2.id}") do
       click_on 'Approve', match: :first
-      expect(page).to have_content("Approved")
     end
 
-    expect(page).to have_content("Created Store #{sr2.name} and Admin #{sr2.user.name}")
+    expect(page).to have_content("Approved")
+
+    expect(page).to have_content("Created Store #{sr2.name} and Admin #{sr2.user.name}.")
 
     visit "/#{sr2.name}"
 
