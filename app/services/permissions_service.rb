@@ -9,7 +9,7 @@ class PermissionsService
     return true if all_visitor_permissions
     if user.platform_admin?
       return true if platform_admin_permissions
-      return true if business_admin_persmissions
+      return true if business_admin_permissions
       return true if business_manager_permissions
       return true if registered_user_permissions
     elsif user.admin?
