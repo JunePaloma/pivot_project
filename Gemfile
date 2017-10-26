@@ -37,6 +37,7 @@ gem 'omniauth-twitter'
 gem 'figaro'
 gem 'faraday'
 gem 'twilio-ruby'
+gem 'will_paginate'
 
 
 # Use Capistrano for deployment

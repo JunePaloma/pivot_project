@@ -3,17 +3,17 @@ class Admin::DashboardController < Admin::BaseController
   def index
     @all_orders = Order.all
     if params[:order_status] == "all"
-      @orders = Order.all.sort
+      @orders = Order.paginate(:page => params[:page], :per_page => 10)
     elsif params[:order_status] == "completed"
-      @orders = Order.completed.sort
+      @orders = Order.completed.paginate(:page => params[:page], :per_page => 10)
     elsif params[:order_status] == "paid"
-      @orders = Order.paid.sort
+      @orders = Order.paid.paginate(:page => params[:page], :per_page => 10)
     elsif params[:order_status] == "cancelled"
-      @orders = Order.cancelled.sort
+      @orders = Order.cancelled.paginate(:page => params[:page], :per_page => 10)
     elsif params[:order_status] == "ordered"
-      @orders = Order.ordered.sort
+      @orders = Order.ordered.paginate(:page => params[:page], :per_page => 10)
     else
-      @orders = Order.all
+      @orders = Order.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
