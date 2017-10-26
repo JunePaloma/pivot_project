@@ -1,7 +1,7 @@
 class StoreRequestsController < ApplicationController
 
   def new
-    @requests = StoreRequest.new
+    @request = StoreRequest.new
   end
 
 end
