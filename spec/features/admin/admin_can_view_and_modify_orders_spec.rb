@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature "as a logged in admin" do
   scenario "I can view orders on the dashboard" do
-    admin   = create(:user, role: 1)
+    admin   = create(:operator)
 
     allow_any_instance_of(ApplicationController).to receive(
-    :current_user).and_return(admin)
+    :current_operator).and_return(admin)
 
     user1   = create(:user_with_orders)
 
@@ -34,8 +34,8 @@ feature "as a logged in admin" do
   end
 
   scenario "I can filter the orders on the dashboard page" do
-    admin   = create(:user, role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    admin   = create(:operator)
+    allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
 
     user1   = create(:user_with_orders)
 
@@ -85,8 +85,8 @@ feature "as a logged in admin" do
   end
 
   scenario "I can change the status of the order" do
-    admin   = create(:user, role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    admin   = create(:operator)
+    allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
 
     user = create(:user)
     order1 = Order.create(user: user, status: "paid")
