@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  belongs_to :store, optional: true
   belongs_to :user
   has_many :item_orders
   has_many :items, through: :item_orders
@@ -10,13 +11,16 @@ class Order < ApplicationRecord
   scope :completed, -> { where(status: "completed")}
 
   def self.create_from_items(items, current_user)
-    order = Order.create(user_id: current_user.id)
-    items.each do |item, quantity|
+    fake_order = Order.new
+    items_by_store = fake_order.create_items_by_store(items)
+    items_by_store.each do |store, items|
+      order = Order.create(user_id: current_user.id, store_id: store)
+      items.each do |item, quantity|
         quantity.times do
           order.items << item
         end
+      end
     end
-    order.save
   end
 
   def total_price
@@ -38,4 +42,15 @@ class Order < ApplicationRecord
   def unique_items
     items.uniq
   end
+  
+  def create_items_by_store(items)
+    items_by_store = {}
+    items.each do |item, quantity|
+      items_by_store[item.store_id] = {item => quantity} if items_by_store[item.store_id].nil?
+      items_by_store[item.store_id].merge!({item => quantity}) if items_by_store[item.store_id]
+    end
+    items_by_store
+  end
+
 end
+

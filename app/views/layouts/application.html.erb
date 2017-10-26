@@ -106,7 +106,7 @@
       <% end %>
 
       <div id="main">
-        <% unless @current_operator %>
+        <% if current_user.nil? && current_admin? == nil %>
         <div class='loginbutton'>
           <%= render :partial => 'layouts/login_popup' %>
         </div>
