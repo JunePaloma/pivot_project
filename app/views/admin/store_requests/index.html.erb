@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Request</th>
-      <th>User</th>
+      <th>User/Operator</th>
       <th>Store Name</th>
       <th>Request Placed On:</th>
       <th>Request Updated At: </th>
@@ -19,7 +19,11 @@
       <div class="request<%= request.id %>">
         <tr>
         <td><%= request.id %></td>
+        <% if request.user %>
         <td><%= request.user.username %></td>
+        <% else %>
+        <td><%= request.operator.user_name %></td>
+        <% end %>
         <td><%= request.name %></td>
         <td><%= request.created_at.to_formatted_s(:long_ordinal) %> </td>
         <td><%= request.updated_at.to_formatted_s(:long_ordinal) %> </td>

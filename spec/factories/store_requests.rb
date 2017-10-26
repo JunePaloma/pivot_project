@@ -7,6 +7,7 @@ FactoryGirl.define do
       "#{x}store_request_description"
     end
     status 0
-    user
+    user nil
+    operator nil
   end
 end
