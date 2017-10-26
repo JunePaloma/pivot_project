@@ -2,14 +2,16 @@ require 'rails_helper'
 
 feature "from the admin dashboard" do
   scenario "they can click all items and visit item index" do
-    admin   = create(:user, role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    admin   = create(:operator)
+    allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
     item1 = create(:item)
     item2 = create(:item)
 
-    visit 'admin/dashboard'
+    visit admin_dashboard_index_path
+
 
     click_on "All Items"
+
 
     expect(current_path).to eq("/admin/items")
 

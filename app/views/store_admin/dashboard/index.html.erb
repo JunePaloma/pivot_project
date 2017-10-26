@@ -1,0 +1,6 @@
+<h1>Store Admin Dashboard</h1>
+
+<%= link_to "Visit store manager dashboard", admin_dashboard_index_path %>
+<%= link_to "Update store information", edit_store_admin_store_path(@operator_store) %>
+<%= link_to "Manage store operators", store_admin_operators_path %>
+<%= link_to "Logout", operator_logout_path, method: :delete %>

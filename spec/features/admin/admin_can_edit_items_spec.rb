@@ -2,16 +2,19 @@ require 'rails_helper'
 
 feature "from the items index and admin" do
   scenario "can click edit item and visit edit item page" do
-    admin   = create(:user, role: 1)
-
-    allow_any_instance_of(ApplicationController).to receive(
-    :current_user).and_return(admin)
-
+    admin   = create(:operator)
+    admins_store = create(:store)
+    StoreOperator.create!(store: admins_store, operator: admin)
     item1 = create(:item)
     item2 = create(:item)
 
-    visit admin_items_path
+    visit operator_login_path
+    fill_in "operatorsesh[user_name]", with: admin.user_name
+    fill_in "operatorsesh[password]", with: admin.password
 
+    click_on("Login as Store Operator")
+    
+    visit admin_items_path
     click_on "edit", :match => :first
 
     expect(current_path).to eq(edit_admin_item_path(item1))

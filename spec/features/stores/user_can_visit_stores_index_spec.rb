@@ -11,7 +11,6 @@ feature "User visits stores index" do
     items2 = create_list(:item, 5)
     last_store.items << items2
     last_store.update(name: "Sweet Dee's Birdhouses")
-
     visit '/'
 
     click_on 'View Stores'
