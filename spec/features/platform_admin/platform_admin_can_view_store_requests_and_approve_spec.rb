@@ -19,20 +19,20 @@ describe 'Platform Admin can view all store requests' do
     
     expect(page).to have_content("#{sr1.name}")
     expect(page).to have_content("#{sr1.id}")
-    expect(page).to have_content("#{sr1.user}")
+    expect(page).to have_content("#{sr1.user.username}")
     expect(page).to have_content("#{sr1.updated_at.to_formatted_s(:long_ordinal)}")
     expect(page).to have_content("#{sr1.created_at.to_formatted_s(:long_ordinal)}")
     expect(page).to have_content("Pending", count: 3)
     expect(page).to have_selector(:link_or_button, 'Approve', count: 3)
     expect(page).to have_selector(:link_or_button, 'Decline', count: 3)
 
-    within("request#{sr1.id}") do
-      click_on 'Decline'
+    within(".request#{sr1.id}") do
+      click_on 'Decline', match: :first
       expect(page).to have_content("Declined")
     end
 
-    within("request#{sr2.id}") do
-      click_on 'Approve'
+    within(".request#{sr2.id}") do
+      click_on 'Approve', match: :first
       expect(page).to have_content("Approved")
     end
 
