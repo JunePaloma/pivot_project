@@ -17,8 +17,12 @@ describe 'Registered user can request a new store' do
 
     expect(current_path).to eq store_requests_path
 
+    sr = StoreRequest.first
+
     expect(page).to have_content("Cool Store")
-    expect(page).to have_content("This is a cool store")
-    expect(page).to have_content("Pending Review")
+    expect(page).to have_content("#{sr.id}")
+    expect(page).to have_content("#{sr.updated_at.to_formatted_s(:long_ordinal)}")
+    expect(page).to have_content("#{sr.created_at.to_formatted_s(:long_ordinal)}")
+    expect(page).to have_content("Pending")
   end
 end
