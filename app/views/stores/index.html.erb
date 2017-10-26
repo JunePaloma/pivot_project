@@ -5,7 +5,11 @@
   <div class="col s12 m6 l3">
     <div class="card medium">
       <div class="card-image">
-        <%= image_tag store.items.first.image_path %>
+        <% if store.items.nil? %>
+          <%= image_tag "bath4.jpg" %>
+        <% else %>
+          <%= image_tag store.items.first.image_path %>
+        <% end %>
         <span class="card-title"></span>
       </div>
       <div class="card-content">
