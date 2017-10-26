@@ -13,9 +13,11 @@
 			<div class="center-align">
 			  <%= button_to 'View Stores', stores_path, method: :get, class: "btn-large black large" %>
 			</div>
+			<% if current_user || current_operator %>
 			<div class="center-align">
 				<%= button_to 'Request a Store', new_store_request_path, method: :get, class: "btn-large black large" %>
 			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
