@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
 
+  resources :store_requests, only: [:new]
+
   namespace :api do
     namespace :v1 do
       resources :merchants, only: [:index]
