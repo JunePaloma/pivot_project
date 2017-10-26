@@ -9,7 +9,7 @@ class PermissionsService
     return true if all_visitor_permissions
     if user.platform_admin?
       return true if platform_admin_permissions
-      return true if business_admin_persmissions
+      return true if business_admin_permissions
       return true if business_manager_permissions
       return true if registered_user_permissions
     elsif user.admin?
@@ -44,6 +44,7 @@ class PermissionsService
   def platform_admin_permissions
     return true if controller == "dashboard" && action.in?(["index"])
     return true if controller == "stores" && action.in?(%w(new create destroy))
+    return true if controller == "admin/store_requests" && action.in?(%w(index decline approve))
   end
 
   def business_admin_permissions
@@ -63,5 +64,6 @@ class PermissionsService
   def registered_user_permissions
     return true if controller == "orders" && action.in?(["index", "show", "create"])
     return true if controller == "users" && action.in?(%w(edit update show))
+    return true if controller == "store_requests" && action.in?(%w(new create index))
   end
 end
