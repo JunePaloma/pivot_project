@@ -14,26 +14,13 @@ class Order < ApplicationRecord
     fake_order = Order.new
     items_by_store = fake_order.create_items_by_store(items)
     items_by_store.each do |store, items|
-      # store.each do |item, quantity|
-        order = Order.create(user_id: current_user.id, store_id: store)
-        items.each do |item, quantity|
-          quantity.times do
-            order.items << item
-          end
+      order = Order.create(user_id: current_user.id, store_id: store)
+      items.each do |item, quantity|
+        quantity.times do
+          order.items << item
         end
-        # order.save
+      end
     end
-    # items.each_pair do |item, quantity|
-    #   items_by_store.each_pair do |store_id, items|
-    #     binding.pry
-    #     order = Order.create(user_id: current_user.id, store_id: store_id)
-    #     items.each do |item, quantity|
-    #         quantity.times do
-    #           order.items << item
-    #         end
-    #     order.save 
-    #     end
-    #   end
   end
 
   def total_price
