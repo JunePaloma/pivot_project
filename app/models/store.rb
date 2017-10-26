@@ -3,6 +3,7 @@ class Store < ApplicationRecord
   has_many :items
   has_many :store_operators
   has_many :operators, through: :store_operators
+  has_many :orders
 
   def find_orders
     items
