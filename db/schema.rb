@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 20171026053444) do
     t.string "description"
     t.integer "status", default: 0
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_store_requests_on_user_id"
   end
 
