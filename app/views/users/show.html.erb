@@ -1,5 +1,7 @@
 <h1>Welcome <%= current_user.username %></h1>
-
+<p> <%= current_user.address %> </p>
+<p> <%= current_user.phone %> </p>
+<p> <%= current_user.email %>  </p>
 
 
 <%= link_to "Edit My Account", edit_user_path(current_user), class: "black-text" %>
