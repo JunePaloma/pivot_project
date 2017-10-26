@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026003549) do
+ActiveRecord::Schema.define(version: 20171026160855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,18 @@ ActiveRecord::Schema.define(version: 20171026003549) do
     t.index ["store_id"], name: "index_store_operators_on_store_id"
   end
 
+  create_table "store_requests", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "status", default: 0
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "operator_id"
+    t.index ["operator_id"], name: "index_store_requests_on_operator_id"
+    t.index ["user_id"], name: "index_store_requests_on_user_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -123,4 +135,6 @@ ActiveRecord::Schema.define(version: 20171026003549) do
   add_foreign_key "orders", "users"
   add_foreign_key "store_operators", "operators"
   add_foreign_key "store_operators", "stores"
+  add_foreign_key "store_requests", "operators"
+  add_foreign_key "store_requests", "users"
 end
