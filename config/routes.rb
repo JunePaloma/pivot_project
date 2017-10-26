@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
 
-  resources :store_requests, only: [:new, :create]
+  resources :store_requests, only: [:new, :create, :index]
 
   namespace :api do
     namespace :v1 do

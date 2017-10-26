@@ -1,0 +1,28 @@
+<h1>Your Store Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Store Name</th>
+      <th>Request Placed On:</th>
+      <th>Request Updated At: </th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+
+  </thead>
+
+  <tbody class="table">
+    <% @requests.each do |request| %>
+      <div class="request<%= request.id %>">
+        <tr>
+        <td><%= request.id %></td>
+        <td><%= request.name %></td>
+        <td><%= request.created_at.to_formatted_s(:long_ordinal) %> </td>
+        <td><%= request.updated_at.to_formatted_s(:long_ordinal) %> </td>
+        <td><%= request.status.humanize %></td>
+      </div>
+      <% end %>
+    </tbody>
+  </table>
