@@ -1,5 +1,17 @@
 <h3>Admin Dashboard</h3>
 
+<% if current_operator.platform_admin? %>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="center-align">
+        <%= button_to 'View Store Requests', admin_store_requests_path, method: :get, class: "btn-large black large" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <p>Ordered: <%= @all_orders.ordered.count %> </p>
 <p>Paid: <%= @all_orders.paid.count %> </p>
 <p>Cancelled: <%= @all_orders.cancelled.count %> </p>

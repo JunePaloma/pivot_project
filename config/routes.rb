@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :stores, only: [:edit, :update]
     resources :operators
+    resources :store_requests, only: [:index]
     # get '/dashboard', to: "admindashboard#dashboard"
   end
 
