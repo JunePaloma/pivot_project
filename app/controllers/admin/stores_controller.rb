@@ -1,4 +1,4 @@
-class StoreAdmin::StoresController < BaseController
+class Admin::StoresController < BaseController
 
   def edit
   end
