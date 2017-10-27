@@ -15,9 +15,10 @@ class Item < ApplicationRecord
   end
 
   def self.top_items(quantity=nil)
-    select('items.*')
-      .joins(:orders)
+    Item.select('items.*, sum(item_orders.item_id * items.price) as sum')
+      .joins(:item_orders)
       .group(:id)
-      .order('orders.item_subtotal')
+      .order("sum desc")
+      .limit(quantity)
   end
 end
