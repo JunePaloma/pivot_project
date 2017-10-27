@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Top customers by volume of orders" do
+describe "Top customers by volume of orders api" do
   it "sends a list of customers" do
     users = create_list(:user, 5)
     users.each do |user|
