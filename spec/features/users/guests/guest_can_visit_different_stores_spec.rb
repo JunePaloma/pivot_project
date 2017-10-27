@@ -2,7 +2,13 @@ require 'rails_helper'
 
 describe "Guest can see list of stores" do
   scenario "and can view a specific store and associated items" do
-    store1, store2 = create_list(:store, 2)
+    store1 = StoreCreator.new("Charlies Couch Corner", "A store with couches").execute
+    items = create_list(:item, 5, store: store1)
+    store1.items << items
+    store2 = StoreCreator.new("Sweet Dee's Birdhouses", "A store with birdhouses").execute
+    items2 = create_list(:item, 5, store: store2)
+    store2.items << items2
+
 
     visit '/'
 

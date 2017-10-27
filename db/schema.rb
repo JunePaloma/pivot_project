@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20171026160855) do
     t.string "verification_code"
     t.string "phone"
     t.string "email"
+    t.boolean "platform_admin", default: false
   end
 
   add_foreign_key "category_items", "categories"
