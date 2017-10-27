@@ -9,7 +9,7 @@ class OperatorseshController < ApplicationController
     if authenticated?(operator)
       session[:operator_id] = operator.id
       flash[:good_message] =  "Welcome back #{operator.name}"
-      redirect_to(admin_dashboard_index_path)
+      redirect_to(admin_dashboard_show_path)
     else
       flash[:bad_message] = "Login Unsuccessful"
       redirect_to(operator_login_path)

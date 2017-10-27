@@ -23,10 +23,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :dashboard, only: [:index]
     resources :orders, only: [:show, :index]
     resources :items, except: [:destroy]
-    resources :stores, only: [:edit, :update]
+    resources :stores, only: [:edit, :update, :index] do
+      resources :dashboard, only: [:index], as: 'admin_dashboard_index_path'
+    end
+
     resources :operators
     resources :store_requests, only: [:index]
     # get '/dashboard', to: "admindashboard#dashboard"
@@ -59,7 +61,7 @@ Rails.application.routes.draw do
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
 
   post '/store_requests/approve/:store_request_id', to: 'admin/store_requests#approve', as: 'approve_store_request'
-  post '/store_requests/decline/:store_request_id', to: 'admin/store_requests#decline', as: 'decline_store_request'  
+  post '/store_requests/decline/:store_request_id', to: 'admin/store_requests#decline', as: 'decline_store_request'
 
   get '/:store_slug', to: 'stores#show', as: 'store'
 end
