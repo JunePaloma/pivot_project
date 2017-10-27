@@ -9,11 +9,7 @@ feature "User visits stores index" do
     items2 = create_list(:item, 5, store: last_store)
     last_store.items << items2
     
-    visit '/'
-
-    click_on 'View Stores'
-
-    expect(current_path).to eq stores_path
+    visit stores_path
 
     expect(page).to have_content first_store.name
     expect(page).to have_content last_store.name
