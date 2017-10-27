@@ -1,0 +1,38 @@
+<h2>Your Stores</h2>
+
+<% if current_operator.platform_admin? %>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="center-align">
+        <%= button_to 'View Store Requests', admin_store_requests_path, method: :get, class: "btn-large black large" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <% @stores.each do |store| %>
+  <div class="col s12 m6 l3">
+    <div class="card medium">
+      <div class="card-image">
+        <% if store.items.nil? %>
+          <%= image_tag "bath4.jpg" %>
+        <% else %>
+          <%= image_tag store.items.first.image_path %>
+        <% end %>
+        <span class="card-title"></span>
+      </div>
+      <div class="card-content">
+        <p class="indextitle"> <%=link_to store.name, admin_store_dashboard_index_path(store) %> </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+  <% if current_operator.platform_admin? %>
+    <%= render '_ajax_partial.html.erb' %>
+  <% end %>
+

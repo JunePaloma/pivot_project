@@ -32,19 +32,19 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
+DatabaseCleaner.strategy = :truncation
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
-  config.before(:suite) do
-    # DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.strategy = :truncation
-
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # config.before(:suite) do
+  #   # DatabaseCleaner.strategy = :transaction
+  #   DatabaseCleaner.strategy = :truncation
+  #
+  #   DatabaseCleaner.clean_with(:truncation)
+# end
 
   config.before(:all) do
     DatabaseCleaner.clean

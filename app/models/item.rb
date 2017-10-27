@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :category_items
   has_many :categories, through: :category_items
 
+
   validates :price, numericality: { greater_than: 0 }
   validates :name, presence: :true, uniqueness: :true
   validates :description, :price, presence: :true

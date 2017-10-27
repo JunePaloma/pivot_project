@@ -5,15 +5,15 @@ feature "from the items index and admin" do
     admin   = create(:operator)
     admins_store = create(:store)
     StoreOperator.create!(store: admins_store, operator: admin)
-    item1 = create(:item)
-    item2 = create(:item)
+    item1 = create(:item, store: admins_store)
+    item2 = create(:item, store: admins_store)
 
     visit operator_login_path
     fill_in "operatorsesh[user_name]", with: admin.user_name
     fill_in "operatorsesh[password]", with: admin.password
-
-    click_on("Login as Store Operator")
     
+    click_on("Login as Store Operator")
+
     visit admin_items_path
     click_on "edit", :match => :first
 

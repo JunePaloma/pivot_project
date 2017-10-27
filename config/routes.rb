@@ -19,17 +19,24 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :items do
         get '/most_revenue', to: 'revenue#index'
+        get '/:id/best_day', to: 'best_day#show'
+
       end
       resources :merchants, only: [:index]
       resources :items, only: [:index]
+      resources :stores_with_most_items_ordered, only: [:index]
+      resources :customers_with_most_orders, only: [:index]
+      resources :top_items, only: [:index]
     end
   end
 
   namespace :admin do
-    resources :dashboard, only: [:index]
     resources :orders, only: [:show, :index]
     resources :items, except: [:destroy]
-    resources :stores, only: [:edit, :update]
+    resources :stores, only: [:edit, :update, :index] do
+      resources :dashboard, only: [:index]
+    end
+
     resources :operators
     resources :store_requests, only: [:index]
     # get '/dashboard', to: "admindashboard#dashboard"
