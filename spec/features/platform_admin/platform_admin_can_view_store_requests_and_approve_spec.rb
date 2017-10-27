@@ -4,7 +4,6 @@ describe 'Platform Admin can view all store requests' do
   scenario 'and can approve or decline individual store requests for a user' do
     admin = create(:operator)
     admin.platform_admin!
-    # allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
     user = create(:user)
     sr1 = create(:store_request, user: user)
     sr2 = create(:store_request, user: user)
