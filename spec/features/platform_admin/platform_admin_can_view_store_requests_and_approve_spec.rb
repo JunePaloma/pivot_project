@@ -16,7 +16,7 @@ describe 'Platform Admin can view all store requests' do
 
     click_on("Login as Store Operator")
 
-    expect(current_path).to eq admin_dashboard_index_path
+    expect(current_path).to eq admin_stores_path
 
     click_on "View Store Requests"
 

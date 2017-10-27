@@ -12,7 +12,7 @@ class Admin::OperatorsController < ApplicationController
     if @operator.save
       session[:operator] = @operator.id
       flash[:good_message] = "Successful Account Creation"
-      redirect_to admin_dashboard_index_path
+      redirect_to admin_stores_path
     else
       redirect_to new_admin_operator_path(store_name: @store.name.parameterize)
     end
