@@ -39,6 +39,8 @@ class PermissionsService
     return true if controller == "items"
     return true if controller == "users" && action.in?(["new", "create"])
     return true if controller == "operatorsesh" && action.in?(["new", "create"])
+    return true if controller == "passwords"
+    return true if controller == "confirmations"
   end
 
   def platform_admin_permissions
