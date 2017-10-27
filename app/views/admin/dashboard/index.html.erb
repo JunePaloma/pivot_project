@@ -12,10 +12,10 @@
 </div>
 <% end %>
 
-<p>Ordered: <%= @all_orders.ordered.count %> </p>
-<p>Paid: <%= @all_orders.paid.count %> </p>
-<p>Cancelled: <%= @all_orders.cancelled.count %> </p>
-<p>Completed: <%= @all_orders.completed.count %> </p>
+<p>Ordered: <%= @orders.ordered.count %> </p>
+<p>Paid: <%= @orders.paid.count %> </p>
+<p>Cancelled: <%= @orders.cancelled.count %> </p>
+<p>Completed: <%= @orders.completed.count %> </p>
 
 <div class="row">
 <%= form_tag({}, {:class => "status-form col s2", :method => :get}) do %>
