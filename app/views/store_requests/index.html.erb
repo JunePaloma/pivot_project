@@ -22,6 +22,9 @@
         <td><%= request.created_at.to_formatted_s(:long_ordinal) %> </td>
         <td><%= request.updated_at.to_formatted_s(:long_ordinal) %> </td>
         <td><%= request.status.humanize %></td>
+        <% if request.approved? %>
+        <td><%= button_to "Create Admin Account", new_admin_operator_path(store_name: request.name.parameterize), method: :get, class: "waves-effect waves-light btn black" %></td>
+        <% end %>
       </div>
       <% end %>
     </tbody>

@@ -15,7 +15,7 @@ class Admin::StoreRequestsController < Admin::BaseController
   def approve
     request = StoreRequest.find(params[:store_request_id])
     if StoreRequestConverter.new(request).approved
-      flash[:good_message] = "Created Store #{request.name} and Admin #{user_or_operator(request).name}."
+      flash[:good_message] = "Created Store #{request.name}."
       redirect_to admin_store_requests_path
     end
   end
