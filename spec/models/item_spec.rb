@@ -32,11 +32,12 @@ RSpec.describe Item, type: :model do
 
     it 'returns list of items ranked by revenue' do
       store = create(:store)
-      store.orders = create_list(:order, 5)
+      store.orders = create_list(:order, 3)
 
       store.orders.each do |order|
         order.items << create(:item)
       end
+
       top_earners = Item.top_items(2)
 
       expect(top_earners.length).to eq(2)
