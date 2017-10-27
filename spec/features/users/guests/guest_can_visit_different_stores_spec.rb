@@ -10,9 +10,7 @@ describe "Guest can see list of stores" do
     store2.items << items2
 
 
-    visit '/'
-
-    click_on 'View Stores'
+    visit stores_path
 
     expect(page).to have_content(store1.name)
     expect(page).to have_content(store2.name)

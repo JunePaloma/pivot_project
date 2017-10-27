@@ -24,7 +24,7 @@ feature "as a logged in admin" do
     order4 = create(:order, store: store, user: user2)
 
     user2.orders.each do |order|
-      order.items << create_list(:item, 3)
+      order.items << create_list(:item, 3, store: store)
     end
 
     visit admin_stores_path
@@ -49,7 +49,7 @@ feature "as a logged in admin" do
     order2 = create(:order, store: store, user: user1, status: "completed")
 
     user1.orders.each do |order|
-      order.items << create_list(:item, 3)
+      order.items << create_list(:item, 3, store: store)
     end
 
     user2 = create(:user, name: 'Kali')
@@ -102,7 +102,7 @@ feature "as a logged in admin" do
 
 
     user1.orders.each do |order|
-      order.items << create_list(:item, 3)
+      order.items << create_list(:item, 3, store: store)
     end
 
     visit admin_stores_path

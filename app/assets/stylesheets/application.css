@@ -318,6 +318,15 @@
   display: flex;
 }
 
+.index-buttons {
+  margin-right: 100%;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .space {
   padding-right: 5%;
 }
@@ -331,6 +340,10 @@
   display: flex;
 }
 
+.welcome-image {
+  padding-right: 300px;
+}
+
 .carouselimg {
   max-width: 100%;
   max-height: 100%;
@@ -341,12 +354,17 @@
   width: 50%;
 }
 
+.admin-button {
+  padding-left: 25%;
+  padding-top: 3%;
+}
+
 .welcome {
-  margin-left: 20%;
+  padding-left: 0%;
 }
 
 #carouseltitle {
-  margin-left: 13%;
+  margin-left: 30%;
 }
 
 .dashboard-card {
