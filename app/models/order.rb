@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :item_orders
   has_many :items, through: :item_orders
+
   enum status: ["ordered", "paid", "cancelled", "completed"]
 
   scope :ordered, -> { where(status: "ordered")}
@@ -42,7 +43,7 @@ class Order < ApplicationRecord
   def unique_items
     items.uniq
   end
-  
+
   def create_items_by_store(items)
     items_by_store = {}
     items.each do |item, quantity|
@@ -53,4 +54,3 @@ class Order < ApplicationRecord
   end
 
 end
-
