@@ -12,7 +12,7 @@ feature "as a logged in admin" do
     order2 = create(:order, store: store, user: user1)
 
     user1.orders.each do |order|
-      order.items << create_list(:item, 3)
+      order.items << create_list(:item, 3, store: store)
     end
     visit admin_stores_path
     click_on store.name
