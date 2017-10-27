@@ -46,3 +46,16 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+$.ajax({
+  type: 'GET',
+  url: 'http://localhost:3000/api/v1/merchants',
+  headers: {'Authorization': 'Token token=5a9b5918e8fff9b0ca6f8c643422e8d1'},
+  }).done(function(data) {
+    console.log(data);
+    data.forEach(function(store) {
+      console.log(store);
+      $('#jq_ajax').append(
+      `<p>${store['name']}</p>
+      <p>${store['description']}</p>`
+  )})});

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item_order do
     order
-    item 
+    item
   end
 end

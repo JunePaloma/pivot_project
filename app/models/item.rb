@@ -15,11 +15,11 @@ class Item < ApplicationRecord
     find(rand(1..12))
   end
 
-  def self.top_items
-    select('items.*, sum(item_orders.item_id * items.price) as sum')
-    .joins(:item_orders)
-    .group(:id)
-    .order("sum desc")
-    .limit(5)
+  def self.top_items(quantity=nil)
+    Item.select('items.*, sum(item_orders.item_id * items.price) as sum')
+      .joins(:item_orders)
+      .group(:id)
+      .order("sum desc")
+      .limit(quantity)
   end
 end
