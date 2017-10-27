@@ -31,3 +31,8 @@
   </div>
   <% end %>
 </div>
+
+  <% if current_operator.platform_admin? %>
+    <%= render 'ajax_partial.html.erb' %>
+  <% end %>
+

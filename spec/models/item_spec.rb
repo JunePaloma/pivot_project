@@ -29,6 +29,20 @@ RSpec.describe Item, type: :model do
 
     expect(item.class).to eq(Item)
     end
+
+    it ' .top_items returns list of items ranked by revenue' do
+      store = create(:store)
+      store.orders = create_list(:order, 3)
+
+      store.orders.each do |order|
+        order.items << create(:item)
+      end
+
+      top_earners = Item.top_items(2)
+
+      expect(top_earners.length).to eq(2)
+      expect(top_earners[0].price).to eq(50.0)
+    end
   end
 
   context "Instance Methods" do

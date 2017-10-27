@@ -8,6 +8,6 @@ FactoryGirl.define do
     image_path "grosscouch.jpg"
     active true
     category
-    store 
+    store
   end
 end

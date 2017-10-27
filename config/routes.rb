@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :items do
+        get '/most_revenue', to: 'revenue#index'
+        get '/:id/best_day', to: 'best_day#show'
+
+      end
       resources :merchants, only: [:index]
       resources :items, only: [:index]
       resources :stores_with_most_items_ordered, only: [:index]
