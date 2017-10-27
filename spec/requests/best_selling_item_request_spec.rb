@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Item' do
-  it 'returns best selling items' do
+  it '.top_items returns best selling items' do
     store  = create(:store)
     item1     = create(:item, store_id: store.id, price: 50.0)
     item2     = create(:item, store_id: store.id, price: 25.0)
@@ -15,7 +15,6 @@ describe 'Item' do
 
     get '/api/v1/items/most_revenue?quantity=2', headers: { 'Authorization': %{Token token="#{ENV['API_KEY']}"}}
 
-    require 'pry'; binding.pry
     expect(response).to be_success
 
     top_items = JSON.parse(response.body)

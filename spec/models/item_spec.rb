@@ -30,7 +30,7 @@ RSpec.describe Item, type: :model do
     expect(item.class).to eq(Item)
     end
 
-    it 'returns list of items ranked by revenue' do
+    it ' .top_items returns list of items ranked by revenue' do
       store = create(:store)
       store.orders = create_list(:order, 3)
 
