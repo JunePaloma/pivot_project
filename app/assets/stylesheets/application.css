@@ -370,3 +370,8 @@ html, body {
 .dashboard-card {
   margin-top: 15%;
 }
+
+#jq {
+  overflow: scroll;
+  width: 38vw;
+}
