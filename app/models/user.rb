@@ -28,7 +28,7 @@ class User < ApplicationRecord
     user
   end
 
-  def self.most_items_sold
+  def self.most_orders_placed
     joins(orders:[:item_orders])
     .select("users.*, count(users.id) as total")
     .group(:id)
