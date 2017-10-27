@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "as a logged in admin" do
-  scenario "they are redirected to the admin dashboard after they log in" do
+  scenario "they are redirected to the admin stores page after they log in" do
     admin   = create(:operator)
 
     visit operator_login_path
@@ -14,7 +14,7 @@ feature "as a logged in admin" do
 
     expect(current_path).to eq(admin_stores_path)
 
-    expect(page).to have_content("Admin Dashboard")
+    
   end
 
 feature "as a logged in non-admin user" do

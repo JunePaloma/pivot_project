@@ -28,6 +28,14 @@ class User < ApplicationRecord
     user
   end
 
+  def self.most_orders_placed
+    joins(orders:[:item_orders])
+    .select("users.*, count(users.id) as total")
+    .group(:id)
+    .order("total desc")
+    .limit(5)
+  end
+
   def registered?
    return true if self.persisted?
   end

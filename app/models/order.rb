@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :item_orders
   has_many :items, through: :item_orders
+
   enum status: ["ordered", "paid", "cancelled", "completed"]
 
   scope :ordered, -> { where(status: "ordered")}
@@ -53,7 +54,7 @@ class Order < ApplicationRecord
   end
 
 
-  def filter_orders(status)
+  def self.filter_orders(status)
     if status == "all"
       Order.paginate(:page => params[:page], :per_page => 10)
     elsif status == "completed"
@@ -69,19 +70,19 @@ class Order < ApplicationRecord
     end
   end
 
-  def filter_orders_by_store(status, store)
+  def self.filter_orders_by_store(status, store_id, page)
     if status == "all"
-      Order.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     elsif status == "completed"
-      Order.completed.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.completed.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     elsif status == "paid"
-      Order.paid.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.paid.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     elsif status == "cancelled"
-      Order.cancelled.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.cancelled.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     elsif status == "ordered"
-      Order.ordered.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.ordered.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     else
-      Order.where(store_id: store.id).paginate(:page => params[:page], :per_page => 10)
+      Order.where(store_id: store_id).paginate(:page => page, :per_page => 10)
     end
   end
 end

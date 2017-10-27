@@ -51,8 +51,6 @@ class PermissionsService
   def business_admin_permissions
     return true if controller == "admin/stores" && action.in?(%w(edit update))
     return true if controller == "admin/operators" && action.in?(%w(new create edit update destroy))
-    return true if controller == "admin/stores/:id/dashboard" && action.in?(["index"])
-
   end
 
   def business_manager_permissions
@@ -60,8 +58,8 @@ class PermissionsService
     return true if controller == "operatorsesh"
     return true if controller == "admin/orders"
     return true if controller == "admin/items"
-    return true if controller == "admin/stores/:id/dashboard" && action.in?(["index"])
-    return true if controller == "admin/stores" && action.in?(["index"]) 
+    return true if controller == "admin/dashboard" && action.in?(["index"])
+    return true if controller == "admin/stores" && action.in?(["index"])
 
   end
 

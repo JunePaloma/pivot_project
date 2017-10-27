@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :merchants, only: [:index]
       resources :items, only: [:index]
+      resources :stores_with_most_items_ordered, only: [:index]
+      resources :customers_with_most_orders, only: [:index]
     end
   end
 

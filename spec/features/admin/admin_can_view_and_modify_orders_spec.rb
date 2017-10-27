@@ -7,27 +7,32 @@ feature "as a logged in admin" do
     allow_any_instance_of(ApplicationController).to receive(
     :current_operator).and_return(admin)
 
-    user1   = create(:user_with_orders)
+    user1 = create(:user, name: 'Aaron')
+    store = create(:store)
+    StoreOperator.create(operator: admin, store: store)
+    order1 = create(:order, store: store, user: user1, status: "cancelled")
+    order2 = create(:order, store: store, user: user1, status: "completed")
 
     user1.orders.each do |order|
       order.items << create_list(:item, 3)
     end
 
-    user2   = create(:user_with_orders)
+    user2 = create(:user, name: 'Kali')
+
+    StoreOperator.create(operator: admin, store: store)
+    order3 = create(:order, store: store, user: user2, status: "paid")
+    order4 = create(:order, store: store, user: user2)
 
     user2.orders.each do |order|
       order.items << create_list(:item, 3)
     end
 
-    user1.orders.create(status: "cancelled")
-    user2.orders.create(status: "completed")
-    user2.orders.create(status: "paid")
-
-    visit '/admin/dashboard'
+    visit admin_stores_path
+    click_on store.name
 
     expect(page).to have_link("Order: #{user1.orders.first.id}")
     expect(page).to have_link("Order: #{user2.orders.first.id}")
-    expect(page).to have_content("Ordered: 6")
+    expect(page).to have_content("Ordered: 1")
     expect(page).to have_content("Cancelled: 1")
     expect(page).to have_content("Paid: 1")
     expect(page).to have_content("Completed: 1")
@@ -37,47 +42,46 @@ feature "as a logged in admin" do
     admin   = create(:operator)
     allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
 
-    user1   = create(:user_with_orders)
+    user1 = create(:user, name: 'Aaron')
+    store = create(:store)
+    StoreOperator.create(operator: admin, store: store)
+    order1 = create(:order, store: store, user: user1, status: "cancelled")
+    order2 = create(:order, store: store, user: user1, status: "completed")
 
     user1.orders.each do |order|
       order.items << create_list(:item, 3)
     end
 
-    user2   = create(:user_with_orders)
+    user2 = create(:user, name: 'Kali')
 
-    user2.orders.each do |order|
-      order.items << create_list(:item, 3)
-    end
+    StoreOperator.create(operator: admin, store: store)
+    order3 = create(:order, store: store, user: user2, status: "paid")
+    order4 = create(:order, store: store, user: user2)
 
-    user1.orders.create(status: "cancelled")
-    user2.orders.create(status: "completed")
-    user2.orders.create(status: "paid")
+    visit admin_store_dashboard_index_path(store, order_status: "cancelled")
 
-    visit admin_dashboard_index_path(order_status: "cancelled")
-
-    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
-    expect(page).to_not have_content("Order: #{user2.orders.second.id}")
-    expect(page).to have_content("Order: #{user1.orders.last.id}")
-
-    visit admin_dashboard_index_path(order_status: "completed")
-
-    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
-    expect(page).to have_content("Order: #{user2.orders.fourth.id}")
     expect(page).to_not have_content("Order: #{user1.orders.last.id}")
-
-    visit admin_dashboard_index_path(order_status: "paid")
-
-    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
-    expect(page).to have_content("Order: #{user2.orders.last.id}")
-    expect(page).to_not have_content("Order: #{user1.orders.last.id}")
-
-    visit admin_dashboard_index_path(order_status: "ordered")
-
     expect(page).to have_content("Order: #{user1.orders.first.id}")
+
+    visit admin_store_dashboard_index_path(store, order_status: "completed")
+
+    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
+    expect(page).to have_content("Order: #{user1.orders.last.id}")
     expect(page).to_not have_content("Order: #{user2.orders.last.id}")
+
+    visit admin_store_dashboard_index_path(store, order_status: "paid")
+
+    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
+    expect(page).to have_content("Order: #{user2.orders.first.id}")
     expect(page).to_not have_content("Order: #{user1.orders.last.id}")
 
-    visit admin_dashboard_index_path(order_status: "all")
+    visit admin_store_dashboard_index_path(store, order_status: "ordered")
+
+    expect(page).to have_content("Order: #{user2.orders.last.id}")
+    expect(page).to_not have_content("Order: #{user2.orders.first.id}")
+    expect(page).to_not have_content("Order: #{user1.orders.first.id}")
+
+    visit admin_store_dashboard_index_path(store, order_status: "all")
 
     expect(page).to have_content("Order: #{user1.orders.first.id}")
     expect(page).to have_content("Order: #{user2.orders.last.id}")
@@ -88,14 +92,21 @@ feature "as a logged in admin" do
     admin   = create(:operator)
     allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
 
-    user = create(:user)
+    user1 = create(:user, name: 'Aaron')
     store = create(:store)
-    order1 = Order.create(user: user, status: "paid", store: store)
-    order2 = Order.create(user: user, store: store)
-    order3 = Order.create(user: user, store: store)
+    StoreOperator.create(operator: admin, store: store)
+    order1 = create(:order, store: store, user: user1, status: "paid")
+    order2 = create(:order, store: store, user: user1)
+    order3 = create(:order, store: store, user: user1)
+    order4 = create(:order, store: store, user: user1, status: "paid")
+
+
+    user1.orders.each do |order|
+      order.items << create_list(:item, 3)
+    end
 
     visit admin_stores_path
-    
+
     click_on store.name
 
     expect(page).to have_button("Cancel")

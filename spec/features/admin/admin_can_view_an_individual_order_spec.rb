@@ -7,15 +7,14 @@ feature "as a logged in admin" do
 
     user1 = create(:user, name: 'Aaron')
     store = create(:store)
-    order1 = create(:order, store: store)
-    order2 = create(:order, store: store)
+    StoreOperator.create(operator: admin, store: store)
+    order1 = create(:order, store: store, user: user1)
+    order2 = create(:order, store: store, user: user1)
 
     user1.orders.each do |order|
       order.items << create_list(:item, 3)
     end
-
     visit admin_stores_path
-    save_and_open_page
     click_on store.name
 
     click_on "Order: #{user1.orders.first.id}"
