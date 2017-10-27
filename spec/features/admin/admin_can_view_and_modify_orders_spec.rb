@@ -89,11 +89,14 @@ feature "as a logged in admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
 
     user = create(:user)
-    order1 = Order.create(user: user, status: "paid")
-    order2 = Order.create(user: user)
-    order3 = Order.create(user: user)
+    store = create(:store)
+    order1 = Order.create(user: user, status: "paid", store: store)
+    order2 = Order.create(user: user, store: store)
+    order3 = Order.create(user: user, store: store)
 
-    visit admin_dashboard_index_path
+    visit admin_stores_path
+    
+    click_on store.name
 
     expect(page).to have_button("Cancel")
     expect(page).to have_button("Mark as Paid")

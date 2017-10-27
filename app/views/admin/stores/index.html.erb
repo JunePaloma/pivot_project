@@ -1,5 +1,5 @@
 <h2>Your Stores</h2>
 
 <% @stores.each do |store| %>
-  <%= link_to store.name, admin_dashboard_index_path(store) %>
+  <%= link_to store.name, admin_store_dashboard_index_path(store) %>
 <% end %>

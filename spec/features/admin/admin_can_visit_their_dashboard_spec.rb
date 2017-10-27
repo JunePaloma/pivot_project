@@ -12,18 +12,18 @@ feature "as a logged in admin" do
 
     click_on("Login as Store Operator")
 
-    expect(current_path).to eq('/admin/dashboard')
+    expect(current_path).to eq(admin_stores_path)
 
     expect(page).to have_content("Admin Dashboard")
   end
-  
+
 feature "as a logged in non-admin user" do
   scenario "they cannot visit the admin dashboard" do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit "/admin/dashboard"
+    visit admin_stores_path
 
     expect(page).to have_content("The page you were looking for doesn't exist")
    end
@@ -33,7 +33,7 @@ feature "as a logged in non-admin user" do
     scenario "they cannot visit the admin dashboard" do
       user = create(:user)
 
-      visit "/admin/dashboard"
+      visit admin_stores_path
 
       expect(page).to have_content("The page you were looking for doesn't exist")
    end

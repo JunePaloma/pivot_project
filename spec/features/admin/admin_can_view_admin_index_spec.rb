@@ -7,7 +7,7 @@ feature "from the admin dashboard" do
     item1 = create(:item)
     item2 = create(:item)
 
-    visit admin_dashboard_index_path
+    visit admin_stores_path
 
 
     click_on "All Items"

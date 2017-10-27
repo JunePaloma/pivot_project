@@ -14,7 +14,7 @@ class Admin::OperatorsController < ApplicationController
   def update
     if current_operator.update(operator_params)
       flash[:good_message] = "You've successfully updated your Account"
-      redirect_to admin_dashboard_index_path
+      redirect_to admin_stores_path
     else
       flash[:bad_message] = "Update failed"
       redirect_to edit_admin_user_path(current_operator)

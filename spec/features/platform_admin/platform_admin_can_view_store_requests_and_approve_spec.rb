@@ -11,12 +11,12 @@ describe 'Platform Admin can view all store requests' do
     sr2 = create(:store_request, user: user)
     sr3 = create(:store_request, user: user)
 
-    visit admin_dashboard_index_path
+    visit admin_stores_path
 
     click_on "View Store Requests"
 
     expect(current_path).to eq admin_store_requests_path
-    
+
     expect(page).to have_content("#{sr1.name}")
     expect(page).to have_content("#{sr1.id}")
     expect(page).to have_content("#{sr1.user.username}")
@@ -57,7 +57,7 @@ describe 'Platform Admin can view all store requests' do
     sr2 = create(:store_request, operator: operator)
     sr3 = create(:store_request, operator: operator)
 
-    visit admin_dashboard_index_path
+    visit admin_stores_path
 
     click_on "View Store Requests"
 

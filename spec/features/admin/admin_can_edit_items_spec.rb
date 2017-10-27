@@ -11,9 +11,9 @@ feature "from the items index and admin" do
     visit operator_login_path
     fill_in "operatorsesh[user_name]", with: admin.user_name
     fill_in "operatorsesh[password]", with: admin.password
-
-    click_on("Login as Store Operator")
     
+    click_on("Login as Store Operator")
+
     visit admin_items_path
     click_on "edit", :match => :first
 
