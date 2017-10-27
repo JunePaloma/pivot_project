@@ -24,7 +24,11 @@
 <% end %>
 </div>
 
-<div id='jq_ajax'></div>
+<% if current_operator.platform_admin? %>
+  <%= render '_ajax_partial.html.erb' %>
+<% else %>
+  nil
+<% end %>
 
 <table>
   <thead>
