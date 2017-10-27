@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :store, optional: true
   has_many :category_items
   has_many :categories, through: :category_items
+  
 
   validates :price, numericality: { greater_than: 0 }
   validates :name, presence: :true, uniqueness: :true
