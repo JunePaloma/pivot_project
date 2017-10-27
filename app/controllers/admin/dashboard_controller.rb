@@ -1,20 +1,10 @@
 class Admin::DashboardController < Admin::BaseController
 
   def index
-    @all_orders = Order.all
-    if params[:order_status] == "all"
-      @orders = Order.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:order_status] == "completed"
-      @orders = Order.completed.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:order_status] == "paid"
-      @orders = Order.paid.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:order_status] == "cancelled"
-      @orders = Order.cancelled.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:order_status] == "ordered"
-      @orders = Order.ordered.paginate(:page => params[:page], :per_page => 10)
+    if current_operator.role == "platform_admin"
+      @orders = Order.filter_orders(params[:order_status])
     else
-      @orders = Order.paginate(:page => params[:page], :per_page => 10)
+      @orders = Order.filter_orders_by_store(params[:order_status], params[:store_id], params[:page])
     end
   end
-
 end

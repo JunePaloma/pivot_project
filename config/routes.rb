@@ -26,10 +26,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :dashboard, only: [:index]
     resources :orders, only: [:show, :index]
     resources :items, except: [:destroy]
-    resources :stores, only: [:edit, :update]
+    resources :stores, only: [:edit, :update, :index] do
+      resources :dashboard, only: [:index]
+    end
+
     resources :operators
     resources :store_requests, only: [:index]
     # get '/dashboard', to: "admindashboard#dashboard"

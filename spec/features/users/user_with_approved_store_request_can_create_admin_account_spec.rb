@@ -27,7 +27,7 @@ describe 'User who has an approved store request can create an admin account' do
 
     assigned_store = Store.last
 
-    expect(current_path).to eq admin_dashboard_index_path
+    expect(current_path).to eq admin_stores_path
     expect(assigned_store.operators.last.name).to eq user.name
   end
 

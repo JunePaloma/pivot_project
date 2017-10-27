@@ -53,4 +53,36 @@ class Order < ApplicationRecord
     items_by_store
   end
 
+
+  def self.filter_orders(status)
+    if status == "all"
+      Order.paginate(:page => params[:page], :per_page => 10)
+    elsif status == "completed"
+      Order.completed.paginate(:page => params[:page], :per_page => 10)
+    elsif status == "paid"
+      Order.paid.paginate(:page => params[:page], :per_page => 10)
+    elsif status == "cancelled"
+      Order.cancelled.paginate(:page => params[:page], :per_page => 10)
+    elsif status == "ordered"
+      Order.ordered.paginate(:page => params[:page], :per_page => 10)
+    else
+      Order.paginate(:page => params[:page], :per_page => 10)
+    end
+  end
+
+  def self.filter_orders_by_store(status, store_id, page)
+    if status == "all"
+      Order.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    elsif status == "completed"
+      Order.completed.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    elsif status == "paid"
+      Order.paid.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    elsif status == "cancelled"
+      Order.cancelled.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    elsif status == "ordered"
+      Order.ordered.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    else
+      Order.where(store_id: store_id).paginate(:page => page, :per_page => 10)
+    end
+  end
 end

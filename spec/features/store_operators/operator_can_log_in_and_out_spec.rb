@@ -12,9 +12,7 @@ feature "store operator can login and out" do
 
     click_on("Login as Store Operator")
     expect(page).to have_content("Logged in as: Administrator")
-    expect(current_path).to eq(admin_dashboard_index_path)
-
-
+    expect(current_path).to eq(admin_stores_path)
   end
 
   scenario "registered as an admin" do
@@ -28,9 +26,9 @@ feature "store operator can login and out" do
     click_on("Login as Store Operator")
 
     expect(page).to have_content("Logged in as: Administrator")
-    expect(current_path).to eq(admin_dashboard_index_path)
+    expect(current_path).to eq(admin_stores_path)
 
-    expect(page).to have_content("Mark as Paid")
+    expect(page).to have_content("Your Stores")
 
     click_on("arrow_drop_down")
 

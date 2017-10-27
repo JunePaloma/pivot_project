@@ -1,0 +1,17 @@
+<h2>Your Stores</h2>
+
+<% if current_operator.platform_admin? %>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="center-align">
+        <%= button_to 'View Store Requests', admin_store_requests_path, method: :get, class: "btn-large black large" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @stores.each do |store| %>
+  <%= link_to store.name, admin_store_dashboard_index_path(store) %>
+<% end %>
