@@ -1,21 +1,11 @@
 <h3>Admin Dashboard</h3>
 
-<% if current_operator.platform_admin? %>
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-      <div class="center-align">
-        <%= button_to 'View Store Requests', admin_store_requests_path, method: :get, class: "btn-large black large" %>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
 
-<p>Ordered: <%= @all_orders.ordered.count %> </p>
-<p>Paid: <%= @all_orders.paid.count %> </p>
-<p>Cancelled: <%= @all_orders.cancelled.count %> </p>
-<p>Completed: <%= @all_orders.completed.count %> </p>
+
+<p>Ordered: <%= @orders.ordered.count %> </p>
+<p>Paid: <%= @orders.paid.count %> </p>
+<p>Cancelled: <%= @orders.cancelled.count %> </p>
+<p>Completed: <%= @orders.completed.count %> </p>
 
 <div class="row">
 <%= form_tag({}, {:class => "status-form col s2", :method => :get}) do %>

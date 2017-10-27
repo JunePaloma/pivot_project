@@ -1,0 +1,22 @@
+<h2>Create an account to manage your store</h2>
+
+<%= form_for [:admin, @operator] do |f| %>
+	<%= hidden_field_tag :store_id, @store.id %>
+
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit "Create Account" %>
+<% end %>

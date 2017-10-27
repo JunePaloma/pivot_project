@@ -12,7 +12,7 @@ feature "as a logged in admin" do
 
     click_on "Update"
 
-    expect(current_path).to eq(admin_dashboard_index_path)
+    expect(current_path).to eq(admin_stores_path)
 
     expect(Operator.last.id).to eq(admin.id)
     expect(Operator.last.name).to eq("Frankie")
@@ -31,7 +31,7 @@ feature "as a logged in admin" do
 
     click_on "Update"
 
-    expect(current_path).to eq(admin_dashboard_index_path)
+    expect(current_path).to eq(admin_stores_path)
 
   end
 
