@@ -4,14 +4,20 @@ describe 'Platform Admin can view all store requests' do
   scenario 'and can approve or decline individual store requests for a user' do
     admin = create(:operator)
     admin.platform_admin!
-    allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
-
+    # allow_any_instance_of(ApplicationController).to receive(:current_operator).and_return(admin)
     user = create(:user)
     sr1 = create(:store_request, user: user)
     sr2 = create(:store_request, user: user)
     sr3 = create(:store_request, user: user)
 
-    visit admin_dashboard_index_path
+    visit operator_login_path
+
+    fill_in "operatorsesh[user_name]", with: admin.user_name
+    fill_in "operatorsesh[password]", with: admin.password
+
+    click_on("Login as Store Operator")
+
+    expect(current_path).to eq admin_dashboard_index_path
 
     click_on "View Store Requests"
 
@@ -38,7 +44,7 @@ describe 'Platform Admin can view all store requests' do
 
     expect(page).to have_content("Approved")
 
-    expect(page).to have_content("Created Store #{sr2.name} and Admin #{sr2.user.name}.")
+    expect(page).to have_content("Created Store #{sr2.name}.")
 
     visit "/#{sr2.name}"
 
@@ -84,7 +90,7 @@ describe 'Platform Admin can view all store requests' do
 
     expect(page).to have_content("Approved")
 
-    expect(page).to have_content("Created Store #{sr2.name} and Admin #{sr2.operator.name}.")
+    expect(page).to have_content("Created Store #{sr2.name}.")
 
     visit "/#{sr2.name}"
 
