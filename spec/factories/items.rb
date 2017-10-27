@@ -7,7 +7,7 @@ FactoryGirl.define do
     price 50.0
     image_path "grosscouch.jpg"
     active true
-    category
-    store
+    category nil
+    store nil
   end
 end

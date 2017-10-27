@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :items do
+        get '/most_revenue', to: 'revenue#index'
+      end
       resources :merchants, only: [:index]
       resources :items, only: [:index]
     end
@@ -59,7 +62,7 @@ Rails.application.routes.draw do
   post '/orders/completed/:order_id', to: "orders#completed", as: "order_completed"
 
   post '/store_requests/approve/:store_request_id', to: 'admin/store_requests#approve', as: 'approve_store_request'
-  post '/store_requests/decline/:store_request_id', to: 'admin/store_requests#decline', as: 'decline_store_request'  
+  post '/store_requests/decline/:store_request_id', to: 'admin/store_requests#decline', as: 'decline_store_request'
 
   get '/:store_slug', to: 'stores#show', as: 'store'
 end

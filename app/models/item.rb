@@ -13,4 +13,11 @@ class Item < ApplicationRecord
   def self.random_item
     find(rand(1..12))
   end
+
+  def self.top_items(quantity=nil)
+    select('items.*')
+      .joins(:orders)
+      .group(:id)
+      .order('orders.item_subtotal')
+  end
 end
