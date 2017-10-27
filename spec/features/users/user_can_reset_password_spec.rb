@@ -32,6 +32,7 @@ feature 'User can reset password' do
     click_on 'Submit'
     # Then I should be redirected to "/dashboard"
     expect(current_path).to eq dashboard_path
+    save_and_open_page
     # And I should be logged in
     expect(page).to have_content "Logged in as: #{user.username}"
     expect(page).to have_content 'Edit My Account'
