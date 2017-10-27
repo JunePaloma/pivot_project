@@ -13,10 +13,10 @@ class Store < ApplicationRecord
   end
 
   def self.most_items_sold
-    .joins(items[:item_orders])
+    joins(items:[:item_orders])
     .select("Stores.*, count(stores.id) as total")
     .group(:id)
     .order("total desc")
-    .first
+    .limit(5)
   end
 end

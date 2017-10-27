@@ -1,9 +1,9 @@
-class Api::V1::StoresWithMostItemsController < Api::V1::ApplicationController
+class Api::V1::StoresWithMostItemsOrderedController < Api::V1::ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :restrict_access
 
   def index
-    redner json: Store.most_items_sold
+    render json: Store.most_items_sold
   end
 
   private
