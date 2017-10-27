@@ -11,6 +11,6 @@ class Api::V1::StoresWithMostItemsOrderedController < Api::V1::ApplicationContro
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
       ENV['API_KEY'] == token
-  end
+    end
   end
 end
