@@ -3,7 +3,7 @@ class Api::V1::TopItemsController < Api::V1::ApplicationController
   before_action :restrict_access
 
   def index
-    Item.top_items
+  render json: Item.top_items
   end
   private
 

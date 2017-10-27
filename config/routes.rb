@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index]
       resources :stores_with_most_items_ordered, only: [:index]
       resources :customers_with_most_orders, only: [:index]
+      resources :top_items, only: [:index]
     end
   end
 
