@@ -71,6 +71,24 @@
       <li>
         <div class="divider"></div>
       </li>
+      <% if current_admin? %>
+        <li>
+          <h5><%= link_to "All Items", admin_items_path, class: "white-text" %></h5>
+        </li>
+        <div class="divider">
+          
+        </div>
+        <li>
+          <h5><%= link_to "Edit My Account", edit_admin_operator_path(current_operator), class: "white-text" %></h5>
+        </li>
+      <% else %>
+        <li>
+          <h5><%= link_to 'All Items', items_path, class: "white-text"   %></h5>
+        </li>
+      <% end %>
+      <div class="divider">
+        
+      </div>
       <li>
         <h5>Categories</h5>
       </li>
@@ -86,20 +104,9 @@
         <div class="divider"></div>
       </li>
       <br>
-      <% if current_admin? %>
-        <li>
-          <h5><%= link_to "All Items", admin_items_path, class: "white-text" %></h5>
-        </li>
-        <li>
-          <br>
-        <h5>  <%= link_to "Edit My Account", edit_admin_operator_path(current_operator), class: "white-text" %></h5>
-        </li>
-      <% else %>
-        <li>
-          <h5><%= link_to 'All Items', items_path, class: "white-text"   %></h5>
-        </li>
-      <% end %>
-      </ul>
+    </ul>
+
+
 
       <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: type %>
@@ -115,6 +122,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       </div>
+
+      
+
     </body>
 
   </html>
