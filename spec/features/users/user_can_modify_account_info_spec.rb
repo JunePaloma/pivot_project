@@ -7,6 +7,8 @@ feature "as a logged in user" do
 
     visit '/dashboard'
 
+    
+
     click_on "Edit My Account"
 
     expect(current_path).to eq(edit_user_path(user))
